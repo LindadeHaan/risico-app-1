@@ -25,6 +25,55 @@ import './my-icons.js';
 import './styles/app-drawer.js';
 
 
+// window.addEventListener("load", function(event) {
+//   console.log("All resources finished loading!");
+//
+//   const data = window.localStorage.getItem('data') || []
+//
+//   if (!data.length > 0) {
+// 	  const startData = [
+// 		  {
+// 			  'id' = '1',
+// 			  'my-general-page' : {
+// 				 'firstname-k': '',
+// 				 'lastname-k': '',
+// 				 'gender': '',
+// 				 'age-k': '',
+// 				 'firstname-m': '',
+// 				 'lastname-m': '',
+// 				 'age-m': '',
+// 				 'firstname-d': '',
+// 				 'lastname-d': '',
+// 				 'origin': '',
+// 				 'track': '',
+// 			  }
+// 			  'my-work-page' : {
+// 				 'education-k': '',
+// 				 'level-k': '',
+// 				 'change-k': '',
+// 				 'leave': '',
+// 				 'level-d': '',
+// 				 'level-m': '',
+// 				 'living': '',
+// 				 'household': '',
+// 				 'divorce': '',
+//				 'victim': '',
+// 				 'participation-d': '',
+// 				 'participation-m': '',
+// 				 'eco-d': '',
+// 				 'eco-m': '',
+// 				 'crime': '',
+// 				 'crime-k': '',
+// 				 'crime-halt': '',
+// 				 'crime-p': '',
+// 				 'crime-d': '',
+// 				 'crime-m': '',
+// 			  }
+// 		  }
+// 	  ]
+//   }
+//
+// });
 
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
@@ -115,10 +164,13 @@ class MyApp extends PolymerElement {
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
           <app-toolbar>Menu</app-toolbar>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-            <a name="home" href="[[rootPath]]home">Home</a>
-            <a name="firstpage" href="[[rootPath]]firstpage">Eerste Pagina</a>
-            <a name="secondpage" href="[[rootPath]]secondpage">Tweede Pagina</a>
-			<a name="extrapage" href="[[rootPath]]extrapage">Extra Page</a>
+            <a name="homepage" href="[[rootPath]]homepage">Home</a>
+			<a name="generalpage" href="[[rootPath]]generalpage">Algemeen</a>
+            <a name="workpage" href="[[rootPath]]workpage">Werk & opleiding</a>
+            <a name="housepage" href="[[rootPath]]housepage">Huisvesting & relaties</a>
+			<a name="healthpage" href="[[rootPath]]healthpage">Geestelijke gezondheid</a>
+			<a name="participationpage" href="[[rootPath]]participationpage">Maatschappelijke participatie</a>
+			<a name="justicepage" href="[[rootPath]]justicepage">Justitie</a>
           </iron-selector>
         </app-drawer>
 
@@ -133,10 +185,13 @@ class MyApp extends PolymerElement {
           </app-header>
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <my-home name="home"></my-home>
-            <my-firstpage name="firstpage"></my-firstpage>
-            <my-secondpage name="secondpage"></my-secondpage>
-			<my-extrapage name="extrapage"></my-extrapage>
+            <my-home-page name="homepage"></my-home-page>
+            <my-general-page name="generalpage"></my-general-page>
+            <my-work-page name="workpage"></my-work-page>
+			<my-house-page name="housepage"></my-house-page>
+			<my-health-page name="healthpage"></my-health-page>
+			<my-participation-page name="participationpage"></my-participation-page>
+			<my-justice-page name="justicepage"></my-justice-page>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -169,7 +224,7 @@ class MyApp extends PolymerElement {
      // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'home';
-  } else if (['home', 'firstpage', 'secondpage', 'extrapage'].indexOf(page) !== -1) {
+  } else if (['homepage', 'generalpage', 'workpage', 'housepage', 'healthpage', 'participationpage', 'justicepage'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -187,21 +242,30 @@ class MyApp extends PolymerElement {
     // Note: `polymer build` doesn't like string concatenation in the import
     // statement, so break it up.
     switch (page) {
-      case 'home':
-        import('./my-home.js');
-        break;
-      case 'firstpage':
-        import('./my-firstpage.js');
-        break;
-      case 'secondpage':
-        import('./my-secondpage.js');
-        break;
-		case 'extrapage':
-		  import('./my-extrapage.js');
-		  break;
-      case 'view404':
-        import('./my-view404.js');
-        break;
+    	case 'homepage':
+        	import('./my-home-page.js');
+        	break;
+      	case 'generalpage':
+        	import('./my-general-page.js');
+        	break;
+      	case 'workpage':
+        	import('./my-work-page.js');
+        	break;
+		case 'housepage':
+			import('./my-house-page.js');
+			break;
+		case 'healthpage':
+			import('./my-health-page.js');
+			break;
+		case 'participationpage':
+			import('./my-participation-page.js');
+			break;
+		case 'justicepage':
+			import('./my-justice-page.js');
+			break;
+     	case 'view404':
+        	import('./my-view404.js');
+        	break;
     }
   }
 }

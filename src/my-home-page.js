@@ -1,7 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class Home extends PolymerElement {
+class MyHomePage extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
@@ -37,4 +37,4 @@ class Home extends PolymerElement {
   }
 }
 
-window.customElements.define('my-home', Home);
+window.customElements.define('my-home-page', MyHomePage);
