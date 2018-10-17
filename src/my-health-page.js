@@ -13,16 +13,13 @@ import {
     html
 } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
-import './components/my-button.js';
+// components (elements)
+import './components/my-button-component.js';
+import './components/my-health-component.js';
 // import './components/vaadin-form-layout.js';
 // import './components/vaadin-form-item.js';
 // import './styles/vaadin-form-layout-styles.js';
 // import './styles/vaadin-form-item-styles.js';
-
-// const fatherCrime = document.getElementById("crime-d");
-// const crimeParents = document.getElementById("crime-p")
-// console.log(crimeParents);
-// const crimeParentsValue = crimeParents.options[crimeParents.selectedIndex].value
 
 
 class MyHealthPage extends PolymerElement {
@@ -48,15 +45,8 @@ class MyHealthPage extends PolymerElement {
 			</div>
 
 			<form>
-					<fieldset>
-					<div class="form-item-container">
-						<label for="victim">Als slachtoffer bekend bij slachtofferhulp</label>
-						<select id="victim">
-							<option value="no">Nee</option>
-							<option value="yes">Ja</option>
-						</select>
-					</div>
-					</fieldset>
+
+				<my-health-component></my-health-component>
 
 				<my-prev-button></my-prev-button>
 				<my-next-button></my-next-button>
@@ -64,10 +54,6 @@ class MyHealthPage extends PolymerElement {
 		</div>
     `;
     }
-	changeCrime() {
-		console.log('voert changecrime uit')
-		console.log(document.getElementById("crime-p"))
-	}
 }
 
 

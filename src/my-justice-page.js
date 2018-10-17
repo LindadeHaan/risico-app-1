@@ -10,7 +10,8 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
-import './components/my-button.js';
+import './components/my-button-component.js';
+import './components/my-justice-component.js';
 
 class MyJusticePage extends PolymerElement {
   static get template() {
@@ -35,47 +36,10 @@ class MyJusticePage extends PolymerElement {
 		  </div>
 
 		  <form>
-			<fieldset>
-				<div class="form-item-container">
-					<label for="crime-k">Kind in het verleden verdacht geweest van een delict</label>
-					<select id="crime-k">
-						<option value="no">Nee</option>
-						<option value="yes">Ja</option>
-					</select>
-				</div>
-				<div class="form-item-container">
-					<label for="crime-halt">Kind in aanraking geweest met bureau HALT voor een delict</label>
-					<select id="crime-halt">
-						<option value="no">Nee</option>
-								<option value="yes">Ja</option>
-							</select>
-						</div>
- 						<div class="form-item-container">
-							<label for="parents-crime">Vader of moeder verdacht van delict in het verleden</label>
-							<select id="parents-crime" on-change="changeCrime">
-								<option selected="selected" value="no">Nee</option>
-								<option value="yes">Ja</option>
-							</select>
-						</div>
- 						<div class="form-item-container" id="father-crime">
-							<label for="father-crime">Vader verdacht van delict in het verleden</label>
-							<select id="father-crime">
-								<option value="no">Nee</option>
-								<option value="yes">Ja</option>
-							</select>
-						</div>
- 						<div class="form-item-container" id="father-crime">
-							<label for="mother-crime">Moeder verdacht van delict in het verleden</label>
-							<select id="mother-crime">
-								<option value="no">Nee</option>
-								<option value="yes">Ja</option>
-							</select>
-						</div>
+		  	<my-justice-component></my-justice-component>
 
-			</fieldset>
-
-			  <my-prev-button></my-prev-button>
-			  <my-next-button></my-next-button>
+			<my-prev-button></my-prev-button>
+			<my-next-button></my-next-button>
 		  </form>
 	  </div>
     `;

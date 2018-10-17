@@ -32,9 +32,14 @@ class MyHomePage extends PolymerElement {
         	<p>Deze beslissingondersteuningstool kan gebruikt worden door hulpverleners om een objectieve risico-indicatie te krijgen op een zwaardere maatregel op basis van kenmerken van het kind, de ouders en het huishouden. Onder zwaardere maatregelen vallen in dit geval jeugdhulp met verblijf, jeugdbeschermingsmaatregelen en jeugdreclasseringsmaatregelen.</p>
 			<img src="src/styles/images/jeugdzorg.png" alt="logo">
 		</div>
+		<button on-click='resetStorage'>Reset Vragenlijst</button>
 	  </div>
     `;
   }
+  		resetStorage(){
+			window.localStorage.clear();
+			location.reload();
+		}
 }
 
 window.customElements.define('my-home-page', MyHomePage);

@@ -25,55 +25,61 @@ import './my-icons.js';
 import './styles/app-drawer.js';
 
 
-// window.addEventListener("load", function(event) {
-//   console.log("All resources finished loading!");
-//
-//   const data = window.localStorage.getItem('data') || []
-//
-//   if (!data.length > 0) {
-// 	  const startData = [
-// 		  {
-// 			  'id' = '1',
-// 			  'my-general-page' : {
-// 				 'firstname-k': '',
-// 				 'lastname-k': '',
-// 				 'gender': '',
-// 				 'age-k': '',
-// 				 'firstname-m': '',
-// 				 'lastname-m': '',
-// 				 'age-m': '',
-// 				 'firstname-d': '',
-// 				 'lastname-d': '',
-// 				 'origin': '',
-// 				 'track': '',
-// 			  }
-// 			  'my-work-page' : {
-// 				 'education-k': '',
-// 				 'level-k': '',
-// 				 'change-k': '',
-// 				 'leave': '',
-// 				 'level-d': '',
-// 				 'level-m': '',
-// 				 'living': '',
-// 				 'household': '',
-// 				 'divorce': '',
-//				 'victim': '',
-// 				 'participation-d': '',
-// 				 'participation-m': '',
-// 				 'eco-d': '',
-// 				 'eco-m': '',
-// 				 'crime': '',
-// 				 'crime-k': '',
-// 				 'crime-halt': '',
-// 				 'crime-p': '',
-// 				 'crime-d': '',
-// 				 'crime-m': '',
-// 			  }
-// 		  }
-// 	  ]
-//   }
-//
-// });
+window.addEventListener("load", function(event) {
+  console.log("All resources finished loading!");
+
+  const data = window.localStorage.getItem('data') || []
+
+  if (!data.length > 0) {
+	  const optionData = [
+		  {
+			  'id' : '1',
+			  'general' : {
+				 'gender': '',
+				 'age-k': '',
+				 'lastname-m': '',
+				 'age-m': '',
+				 'lastname-d': '',
+				 'origin': '',
+				 'track': '',
+			 },
+			  'work' : {
+				 'education-k': '',
+				 'level-k': '',
+				 'change-k': '',
+				 'leave': '',
+				 'level-d': '',
+				 'level-m': ''
+			 },
+			  'house' : {
+				 'living': '',
+ 				 'household': '',
+ 				 'divorce': ''
+			 },
+			  'health' : {
+				 'victim': ''
+			 },
+			  'participation' : {
+				 'participation-d': '',
+   				 'participation-m': '',
+   				 'eco-d': '',
+   				 'eco-m': ''
+			 },
+			  'justice' : {
+				 'crime': '',
+    			 'crime-k': '',
+    			 'crime-halt': '',
+    			 'crime-p': '',
+    			 'crime-d': '',
+    			 'crime-m': ''
+			  }
+
+		  }
+	  ]
+	  window.localStorage.setItem('data', JSON.stringify(optionData))
+  }
+
+});
 
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
@@ -151,6 +157,7 @@ class MyApp extends PolymerElement {
 		#main-title {
 			color: white;
 		}
+
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
