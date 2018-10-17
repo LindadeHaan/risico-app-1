@@ -22,8 +22,8 @@ class MyChildComponent extends PolymerElement {
 		  </select>
 	   </div>
 	   <div class="form-item-container">
-		  <label for="age-k" on-change="changeAnswer" name="age-k">Leeftijd kind</label>
-		  <select id="age-k">
+		  <label for="age-k">Leeftijd kind</label>
+		  <select id="age-k" on-change="changeAnswer" name="age-k">
 			 <option value="0-4">0 tot 4 jaar</option>
 			 <option value="4-8">4 tot 8 jaar</option>
 			 <option value="8-12">8 tot 12 jaar</option>
@@ -35,6 +35,44 @@ class MyChildComponent extends PolymerElement {
 
     `;
   }
+
+  changeAnswer(event) {
+	  // alterernative = const target = event.targer
+	  const { target } = event
+	  // alternative: const options = event.options
+	  const { options } = target
+	  // gets the Name of the select
+	  const { name: inputName } = target
+	  // gets the selected value
+	  const selectedValue = options[target.selectedIndex].value
+	  console.log(selectedValue);
+	  setNewLocalStorage(inputName, selectedValue, 'general')
+  }
+
+  ready () {
+  	super.ready ()
+
+	const selectNames = [
+		'gender',
+	  	'age-k'
+	]
+
+	  // loop over selectNames, get all selectNames
+	  // map loop
+	  selectNames.map(selectNames => {
+		  // acces via shadowroot html elements with selectNames
+		  const select = this.shadowRoot.getElementById(selectNames)
+		  //  get localStorage
+		  const valueLocalStorage = getLocalStorageValue('general', selectNames)
+		  console.log(valueLocalStorage)
+
+		  if (valueLocalStorage) {
+			  select.value = valueLocalStorage
+		  }
+	  })
+
+  }
+
 }
 
 
@@ -56,7 +94,7 @@ class MyMotherComponent extends PolymerElement {
 	   <legend>Moeder</legend>
 	   <div>
 		  <label for="age-m">Leeftijd moeder bij geboorte</label>
-		  <select id="age-m" ame="age-m">
+		  <select id="age-m" name="age-m" on-change="changeAnswer">
 			 <option value="20">Jonger dan 20 jaar</option>
 			 <option value="20-25">20 tot 25 jaar</option>
 			 <option value="25-30">25 tot 30 jaar</option>
@@ -69,6 +107,43 @@ class MyMotherComponent extends PolymerElement {
 
     `;
   }
+
+  changeAnswer(event) {
+	// alterernative = const target = event.targer
+	const { target } = event
+	// alternative: const options = event.options
+	const { options } = target
+	// gets the Name of the select
+	const { name: inputName } = target
+	// gets the selected value
+	const selectedValue = options[target.selectedIndex].value
+	console.log(selectedValue);
+	setNewLocalStorage(inputName, selectedValue, 'general')
+  }
+
+  ready () {
+	super.ready ()
+
+  const selectNames = [
+	'age-m'
+  ]
+
+	// loop over selectNames, get all selectNames
+	// map loop
+	selectNames.map(selectNames => {
+		// acces via shadowroot html elements with selectNames
+		const select = this.shadowRoot.getElementById(selectNames)
+		//  get localStorage
+		const valueLocalStorage = getLocalStorageValue('general', selectNames)
+		console.log(valueLocalStorage)
+
+		if (valueLocalStorage) {
+			select.value = valueLocalStorage
+		}
+	})
+
+  }
+
 }
 
 
@@ -100,6 +175,43 @@ class MyFatherComponent extends PolymerElement {
 
     `;
   }
+
+  changeAnswer(event) {
+	  // alterernative = const target = event.targer
+	  const { target } = event
+	  // alternative: const options = event.options
+	  const { options } = target
+	  // gets the Name of the select
+	  const { name: inputName } = target
+	  // gets the selected value
+	  const selectedValue = options[target.selectedIndex].value
+	  console.log(selectedValue);
+	  setNewLocalStorage(inputName, selectedValue, 'general')
+  }
+
+  ready () {
+	  super.ready ()
+
+  const selectNames = [
+	  'age-d'
+  ]
+
+	  // loop over selectNames, get all selectNames
+	  // map loop
+	  selectNames.map(selectNames => {
+		  // acces via shadowroot html elements with selectNames
+		  const select = this.shadowRoot.getElementById(selectNames)
+		  //  get localStorage
+		  const valueLocalStorage = getLocalStorageValue('general', selectNames)
+		  console.log(valueLocalStorage)
+
+		  if (valueLocalStorage) {
+			  select.value = valueLocalStorage
+		  }
+	  })
+
+  }
+
 }
 
 
@@ -148,29 +260,29 @@ class MyBothComponent extends PolymerElement {
 		setNewLocalStorage(inputName, selectedValue, 'general')
 	}
 
-ready () {
-	super.ready ()
+	ready () {
+		super.ready ()
 
-const selectNames = [
-	'origin',
-	'track'
-]
+	const selectNames = [
+		'origin',
+		'track'
+	]
 
-// loop over selectNames, get all selectNames
-// map loop
-selectNames.map(selectNames => {
-	// acces via shadowroot html elements with selectNames
-	const select = this.shadowRoot.getElementById(selectNames)
-	//  get localStorage
-	const valueLocalStorage = getLocalStorageValue('general', selectNames)
-	console.log(valueLocalStorage)
+		// loop over selectNames, get all selectNames
+		// map loop
+		selectNames.map(selectNames => {
+			// acces via shadowroot html elements with selectNames
+			const select = this.shadowRoot.getElementById(selectNames)
+			//  get localStorage
+			const valueLocalStorage = getLocalStorageValue('general', selectNames)
+			console.log(valueLocalStorage)
 
-	if (valueLocalStorage) {
-		select.value = valueLocalStorage
+			if (valueLocalStorage) {
+				select.value = valueLocalStorage
+			}
+		})
+
 	}
-})
-
-}
 
 }
 

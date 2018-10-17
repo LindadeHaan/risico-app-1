@@ -37,9 +37,8 @@ window.addEventListener("load", function(event) {
 			  'general' : {
 				 'gender': '',
 				 'age-k': '',
-				 'lastname-m': '',
 				 'age-m': '',
-				 'lastname-d': '',
+				 'age-d': '',
 				 'origin': '',
 				 'track': '',
 			 },
@@ -66,7 +65,6 @@ window.addEventListener("load", function(event) {
    				 'eco-m': ''
 			 },
 			  'justice' : {
-				 'crime': '',
     			 'crime-k': '',
     			 'crime-halt': '',
     			 'crime-p': '',
@@ -152,6 +150,7 @@ class MyApp extends PolymerElement {
         .drawer-list a.iron-selected {
           color: black;
           font-weight: bold;
+		  width: auto;
         }
 
 		#main-title {
@@ -228,7 +227,7 @@ class MyApp extends PolymerElement {
      // Show the corresponding page according to the route.
      //
      // If no page was found in the route data, page will be an empty string.
-     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
+     // Show 'home' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'home';
   } else if (['homepage', 'generalpage', 'workpage', 'housepage', 'healthpage', 'participationpage', 'justicepage'].indexOf(page) !== -1) {
@@ -250,28 +249,28 @@ class MyApp extends PolymerElement {
     // statement, so break it up.
     switch (page) {
     	case 'homepage':
-        	import('./my-home-page.js');
+        	import('/src/views/my-home-page.js');
         	break;
       	case 'generalpage':
-        	import('./my-general-page.js');
+        	import("/src/views/my-general-page.js");
         	break;
       	case 'workpage':
-        	import('./my-work-page.js');
+        	import('/src/views/my-work-page.js');
         	break;
 		case 'housepage':
-			import('./my-house-page.js');
+			import('/src/views/my-house-page.js');
 			break;
 		case 'healthpage':
-			import('./my-health-page.js');
+			import('/src/views/my-health-page.js');
 			break;
 		case 'participationpage':
-			import('./my-participation-page.js');
+			import('/src/views/my-participation-page.js');
 			break;
 		case 'justicepage':
-			import('./my-justice-page.js');
+			import('/src/views/my-justice-page.js');
 			break;
      	case 'view404':
-        	import('./my-view404.js');
+        	import('/src/my-view404.js');
         	break;
     }
   }

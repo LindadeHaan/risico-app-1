@@ -9,11 +9,14 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
-import './components/my-button-component.js';
-import './components/my-justice-component.js';
+// styles
+import '../styles/shared-styles.js';
 
-class MyJusticePage extends PolymerElement {
+// components (elements)
+import '../components/my-participation-component.js';
+import '../components/my-button-component.js';
+
+class MyParticipationPage extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
@@ -30,20 +33,20 @@ class MyJusticePage extends PolymerElement {
 		}
       </style>
 	  <div class="card">
-		  <div class="flex">
-			  <!-- <div class="circle">2</div> -->
-			  <h1>Geestelijke gezondheid</h1>
-		  </div>
+
+			  <h1>Maatschappelijke Participatie</h1>
+
 
 		  <form>
-		  	<my-justice-component></my-justice-component>
 
-			<my-prev-button></my-prev-button>
-			<my-next-button></my-next-button>
+			<my-participation-component></my-participation-component>
+
+		  	<my-prev-button></my-prev-button>
+		  	<my-next-button></my-next-button>
 		  </form>
 	  </div>
     `;
   }
 }
 
-window.customElements.define('my-justice-page', MyJusticePage);
+window.customElements.define('my-participation-page', MyParticipationPage);

@@ -12,11 +12,14 @@ import {
     PolymerElement,
     html
 } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
-import './components/my-button-component.js';
-import './components/my-general-component.js';
+import '../styles/shared-styles.js';
+// components (elements)
+import '../components/my-button-component.js';
+import '../components/my-health-component.js';
 
-class myGeneralPage extends PolymerElement {
+
+
+class MyHealthPage extends PolymerElement {
     static get template() {
         return html `
       <style include="shared-styles">
@@ -28,33 +31,26 @@ class myGeneralPage extends PolymerElement {
 		.flex {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content:flex-start;
-
+			justify-content: flex-start;
 		}
       </style>
 
-	  <div class="card">
-	     <div class="flex">
-	        <h1>Algemene Informatie</h1>
-	     </div>
-	     <form>
-		 	<my-child-component></my-child-component>
-		 	<my-mother-component></my-mother-component>
-			<my-father-component></my-father-component>
-			<my-both-component></my-both-component>
+		<div class="card">
+
+				<h1>Geestelijke gezondheid</h1>
 
 
+			<form>
 
+				<my-health-component></my-health-component>
 
-	        <div>
-	           <my-prev-button></my-prev-button>
-	           <my-next-button></my-next-button>
-	        </div>
-	     </form>
-	  </div>
-
+				<my-prev-button></my-prev-button>
+				<my-next-button></my-next-button>
+			</form>
+		</div>
     `;
     }
 }
 
-window.customElements.define('my-general-page', myGeneralPage);
+
+window.customElements.define('my-health-page', MyHealthPage);

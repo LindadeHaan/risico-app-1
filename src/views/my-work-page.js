@@ -12,48 +12,34 @@ import {
     PolymerElement,
     html
 } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
+import '../styles/shared-styles.js';
 
 // work components
-import './components/my-button-component.js';
-import './components/my-work-component.js';
-// import './components/vaadin-form-layout.js';
-// import './components/vaadin-form-item.js';
-// import './styles/vaadin-form-layout-styles.js';
-// import './styles/vaadin-form-item-styles.js';
-// const crimeParentsValue = crimeParents.options[crimeParents.selectedIndex].value
+import '../components/my-button-component.js';
+import '../components/my-work-component.js';
 
 
 class myWorkPage extends PolymerElement {
     static get template() {
         return html `
-      <style include="shared-styles">
-        :host {
-          display: block;
-
-          padding: 10px;
-        }
-		.flex {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: flex-start;
-		}
-      </style>
-
+		<style include="shared-styles">
+		   :host {
+		   		display: block;
+		   		padding: 10px;
+		   }
+		   .flex {
+		   		display: flex;
+		   		flex-wrap: wrap;
+		   		justify-content: flex-start;
+		   }
+		</style>
 		<div class="card">
-			<div class="flex">
-
-				<h1>Werk & Opleiding</h1>
-			</div>
-
-				<my-work-component></my-work-component>
-			<form>
-
-
-
-				<my-prev-button></my-prev-button>
-				<my-next-button></my-next-button>
-			</form>
+		   <h1>Werk & Opleiding</h1>
+		   <my-work-component></my-work-component>
+		   <form>
+		      <my-prev-button></my-prev-button>
+		      <my-next-button></my-next-button>
+		   </form>
 		</div>
     `;
     }

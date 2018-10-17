@@ -12,14 +12,10 @@ import {
     PolymerElement,
     html
 } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
-import './components/my-house-component.js';
-import './components/my-button-component.js';
-// import './components/vaadin-form-layout.js';
-// import './components/vaadin-form-item.js';
-// import './styles/vaadin-form-layout-styles.js';
-// import './styles/vaadin-form-item-styles.js';
-// const crimeParentsValue = crimeParents.options[crimeParents.selectedIndex].value
+import '../styles/shared-styles.js';
+import '../components/my-house-component.js';
+import '../components/my-button-component.js';
+
 
 
 class MyHousePage extends PolymerElement {
@@ -28,7 +24,6 @@ class MyHousePage extends PolymerElement {
       <style include="shared-styles">
         :host {
           display: block;
-
           padding: 10px;
         }
 		.flex {
@@ -39,15 +34,10 @@ class MyHousePage extends PolymerElement {
       </style>
 
 		<div class="card">
-			<div class="flex">
-				<h1>Huisvesting & relaties</h1>
-			</div>
-
+			<h1>Huisvesting & relaties</h1>
 			<form>
-
 				<my-house-component></my-house-component>
 				<my-relationship-component></my-relationship-component>
-
 				<my-prev-button></my-prev-button>
 				<my-next-button></my-next-button>
 			</form>

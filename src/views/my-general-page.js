@@ -12,17 +12,11 @@ import {
     PolymerElement,
     html
 } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
-// components (elements)
-import './components/my-button-component.js';
-import './components/my-health-component.js';
-// import './components/vaadin-form-layout.js';
-// import './components/vaadin-form-item.js';
-// import './styles/vaadin-form-layout-styles.js';
-// import './styles/vaadin-form-item-styles.js';
+import '../styles/shared-styles.js';
+import '../components/my-button-component.js';
+import '../components/my-general-component.js';
 
-
-class MyHealthPage extends PolymerElement {
+class myGeneralPage extends PolymerElement {
     static get template() {
         return html `
       <style include="shared-styles">
@@ -34,27 +28,33 @@ class MyHealthPage extends PolymerElement {
 		.flex {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: flex-start;
+			justify-content:flex-start;
+
 		}
       </style>
 
-		<div class="card">
-			<div class="flex">
-				<!-- <div class="circle">2</div> -->
-				<h1>Geestelijke gezondheid</h1>
-			</div>
+	  <div class="card">
 
-			<form>
+	        <h1>Algemene Informatie</h1>
 
-				<my-health-component></my-health-component>
+	     <form>
+		 	<my-child-component></my-child-component>
+		 	<my-mother-component></my-mother-component>
+			<my-father-component></my-father-component>
+			<my-both-component></my-both-component>
 
-				<my-prev-button></my-prev-button>
-				<my-next-button></my-next-button>
-			</form>
-		</div>
+
+
+
+	        <div>
+	           <my-prev-button></my-prev-button>
+	           <my-next-button></my-next-button>
+	        </div>
+	     </form>
+	  </div>
+
     `;
     }
 }
 
-
-window.customElements.define('my-health-page', MyHealthPage);
+window.customElements.define('my-general-page', myGeneralPage);

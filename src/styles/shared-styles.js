@@ -38,7 +38,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       }
 
       h1 {
-        margin: 16px 0 16px 20px;
+        margin: 16px 0 16px 13px;
         color: var(--app-darkgray-color);
         font-size: 22px;
       }
@@ -58,7 +58,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 		  display: flex;
 	      flex-direction: column;
 		  border: none;
-		  margin: 0 2rem;
+		  margin: 2rem 0;
 	  }
 
 	  input, select {

@@ -39,6 +39,43 @@ class MyHouseComponent extends PolymerElement {
 
     `;
   }
+
+  changeAnswer(event) {
+	  // alterernative = const target = event.targer
+	  const { target } = event
+	  // alternative: const options = event.options
+	  const { options } = target
+	  // gets the Name of the select
+	  const { name: inputName } = target
+	  // gets the selected value
+	  const selectedValue = options[target.selectedIndex].value
+	  console.log(selectedValue);
+	  setNewLocalStorage(inputName, selectedValue, 'house')
+  }
+
+  ready () {
+	  super.ready ()
+
+  const selectNames = [
+	   'living',
+	   'household'
+  ]
+
+	  // loop over selectNames, get all selectNames
+	  // map loop
+	  selectNames.map(selectNames => {
+		  // acces via shadowroot html elements with selectNames
+		  const select = this.shadowRoot.getElementById(selectNames)
+		  //  get localStorage
+		  const valueLocalStorage = getLocalStorageValue('house', selectNames)
+		  console.log(valueLocalStorage)
+
+		  if (valueLocalStorage) {
+			  select.value = valueLocalStorage
+		  }
+	  })
+
+  }
 }
 
 
@@ -69,6 +106,43 @@ class MyRelationshipComponent extends PolymerElement {
 		</fieldset>
     `;
   }
+
+  changeAnswer(event) {
+	// alterernative = const target = event.targer
+	const { target } = event
+	// alternative: const options = event.options
+	const { options } = target
+	// gets the Name of the select
+	const { name: inputName } = target
+	// gets the selected value
+	const selectedValue = options[target.selectedIndex].value
+	console.log(selectedValue);
+	setNewLocalStorage(inputName, selectedValue, 'house')
+  }
+
+  ready () {
+	super.ready ()
+
+  const selectNames = [
+	 'divorce'
+  ]
+
+	// loop over selectNames, get all selectNames
+	// map loop
+	selectNames.map(selectNames => {
+		// acces via shadowroot html elements with selectNames
+		const select = this.shadowRoot.getElementById(selectNames)
+		//  get localStorage
+		const valueLocalStorage = getLocalStorageValue('house', selectNames)
+		console.log(valueLocalStorage)
+
+		if (valueLocalStorage) {
+			select.value = valueLocalStorage
+		}
+	})
+
+  }
+
 }
 
 window.customElements.define('my-relationship-component', MyRelationshipComponent);
