@@ -130,7 +130,7 @@ class MyApp extends PolymerElement {
 		  border-bottom-style: solid;
 		  border-width: 1px;
 		  border-color: #d3d3d3;
-		  width: 13.5rem;
+		  /* width: 13.5rem; */
         }
 
 		.drawer-list a:hover {
@@ -138,8 +138,8 @@ class MyApp extends PolymerElement {
 			/* border-left-style: solid;
 			border-right-style: solid; */
 			width: auto;
-			margin: 0;
-			padding: 0 16px;
+			margin-left: 16px;
+			/* padding: 0 16px; */
         }
 
 		.drawer-list a:first-of-type {
