@@ -15,7 +15,6 @@ class MyHealthComponent extends PolymerElement {
 		<div class="form-item-container">
 			<label for="victim">Als slachtoffer bekend bij slachtofferhulp</label>
 			<select id="victim" on-change="changeAnswer" name="victim">
-				<option disabled="disabled" selected="selected">Selecteer</option>
 				<option value="no">Nee</option>
 				<option value="yes">Ja</option>
 			</select>

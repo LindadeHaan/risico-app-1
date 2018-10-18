@@ -18,6 +18,7 @@ class MyHouseComponent extends PolymerElement {
 		<div class="form-item-container">
 			<label for="living">Soort woning</label>
 			<select id="living" on-change="changeAnswer" name="living">
+					<option disabled="disabled" selected="selected">Selecteer</option>
 					<option value="own">Eigen woning</option>
 					<option value="hire">Huurwoning met huurtoeslag</option>
 					<option value="no-hire">Huurwoning zonder huurtoeslag</option>
@@ -27,6 +28,7 @@ class MyHouseComponent extends PolymerElement {
 		<div class="form-item-container">
 			<label for="household">Type huishouden</label>
 			<select id="household" on-change="changeAnswer" name="household">
+					<option disabled="disabled" selected="selected">Selecteer</option>
 					<option value="oneparent">Eenouderhuishouden</option>
 					<option value="married-kids">Gehuwd paar met kinderen</option>
 					<option value="not-married-kids">Niet-gehuwd paar met kinderen</option>
@@ -144,6 +146,7 @@ class MyRelationshipComponent extends PolymerElement {
 			<div class="form-item-container">
 				<label for="divorce">Ouders gescheiden</label>
 				<select id="divorce" on-change="changeAnswer" name="divorce">
+
 					<option value="no">Nee</option>
 					<option value="yes">Ja</option>
 				</select>

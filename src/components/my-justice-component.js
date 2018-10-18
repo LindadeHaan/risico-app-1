@@ -15,6 +15,7 @@ class MyJusticeComponent extends PolymerElement {
 		<div class="form-item-container">
 			<label for="crime-k">Kind in het verleden verdacht geweest van een delict</label>
 			<select id="crime-k" on-change="changeAnswer" name="crime-k">
+
 				<option value="no">Nee</option>
 				<option value="yes">Ja</option>
 			</select>
@@ -22,6 +23,7 @@ class MyJusticeComponent extends PolymerElement {
 		<div class="form-item-container">
 			<label for="crime-halt">Kind in aanraking geweest met bureau HALT voor een delict</label>
 			<select id="crime-halt" on-change="changeAnswer" name="crime-halt">
+
 				<option value="no">Nee</option>
 						<option value="yes">Ja</option>
 					</select>
@@ -29,6 +31,7 @@ class MyJusticeComponent extends PolymerElement {
 				<div class="form-item-container">
 					<label for="crime-p">Vader of moeder verdacht van delict in het verleden</label>
 					<select id="crime-p" on-change="changeAnswer" name="crime-p">
+
 						<option selected="selected" value="no">Nee</option>
 						<option value="yes">Ja</option>
 					</select>

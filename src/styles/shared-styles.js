@@ -58,7 +58,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 		}
 
 		input, select, label {
-		    width: 14rem;
+		    width: 17rem;
 		}
 
 		label {

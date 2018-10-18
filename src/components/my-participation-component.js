@@ -14,6 +14,7 @@ class MyParticipationComponent extends PolymerElement {
 	   	<div class="form-item-container">
 	      	<label for="participation-d">Maatschappelijke participatie van vader</label>
 	      	<select id="participation-d" on-change="changeAnswer" name="participation-d">
+				<option disabled="disabled" selected="selected">Selecteer</option>
 	    		<option value="work">Werkend of overig actief</option>
 	         	<option value="no-work">Geen werk en niet actief</option>
 	         	<option value="unknown">Onbekend</option>
@@ -22,6 +23,7 @@ class MyParticipationComponent extends PolymerElement {
 	   	<div class="form-item-container">
 	      	<label for="participation-m">Maatschappelijke participatie van moeder</label>
 	      	<select id="participation-m" on-change="changeAnswer" name="participation-m">
+			<option disabled="disabled" selected="selected">Selecteer</option>
 	         	<option value="work">Werkend of overig actief</option>
 	         	<option value="no-work">Geen werk en niet actief</option>
 	         	<option value="unknown">Onbekend</option>
@@ -30,6 +32,7 @@ class MyParticipationComponent extends PolymerElement {
 		   <div class="form-item-container">
 		      <label for="eco-d">Socio economische status van vader</label>
 		      <select id="eco-d" on-change="changeAnswer" name="eco-d">
+			  <option disabled="disabled" selected="selected">Selecteer</option>
 		         <option value="receiver">Bijstandsontvanger</option>
 		         <option value="unsuitable">Arbeidsongeschikte</option>
 		         <option value="social">Ontvanger overige sociale voorzieningen</option>
@@ -50,6 +53,7 @@ class MyParticipationComponent extends PolymerElement {
 		   <div class="form-item-container">
 		      <label for="eco-m">Socio economische status van moeder</label>
 		      <select id="eco-m"on-change="changeAnswer" name="eco-m">
+			  <option disabled="disabled" selected="selected">Selecteer</option>
 		         <option value="receiver">Bijstandsontvanger</option>
 		         <option value="unsuitable">Arbeidsongeschikte</option>
 		         <option value="social">Ontvanger overige sociale voorzieningen</option>

@@ -36,26 +36,19 @@ class myGeneralPage extends PolymerElement {
 		}
       </style>
 
-	  <div class="card">
-
-	        <h1>Algemene Informatie</h1>
-
-	     <form>
-		 	<my-child-component></my-child-component>
-		 	<my-mother-component></my-mother-component>
+	<div class="card">
+		<h1>Algemene Informatie</h1>
+		<form>
+			<my-child-component></my-child-component>
+			<my-mother-component></my-mother-component>
 			<my-father-component></my-father-component>
 			<my-both-component></my-both-component>
-
-
-
-
-	        <div>
-	           <my-prev-button></my-prev-button>
-	           <my-next-button></my-next-button>
-	        </div>
-	     </form>
-	  </div>
-
+			<div>
+				<my-prev-button></my-prev-button>
+				<my-next-button></my-next-button>
+			</div>
+		</form>
+	</div>
     `;
     }
 }

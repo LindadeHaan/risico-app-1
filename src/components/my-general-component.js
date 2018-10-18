@@ -22,6 +22,7 @@ class MyChildComponent extends PolymerElement {
 	   <div class="form-item-container">
 		  <label for="gender">Geslacht kind</label>
 		  <select id="gender" on-change="changeAnswer" name="gender">
+		  	<option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="female">Meisje</option>
 			 <option value="male">Jongen</option>
 		  </select>
@@ -29,6 +30,7 @@ class MyChildComponent extends PolymerElement {
 	   <div class="form-item-container">
 		  <label for="age-k">Leeftijd kind</label>
 		  <select id="age-k" on-change="changeAnswer" name="age-k">
+		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="0-4">0 tot 4 jaar</option>
 			 <option value="4-8">4 tot 8 jaar</option>
 			 <option value="8-12">8 tot 12 jaar</option>
@@ -112,9 +114,10 @@ class MyMotherComponent extends PolymerElement {
 	<fieldset>
 	   <!-- MOEDER -->
 	   <legend>Moeder</legend>
-	   <div>
+	   <div class="form-item-container">
 		  <label for="age-m">Leeftijd moeder bij geboorte</label>
 		  <select id="age-m" name="age-m" on-change="changeAnswer">
+		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="20">Jonger dan 20 jaar</option>
 			 <option value="20-25">20 tot 25 jaar</option>
 			 <option value="25-30">25 tot 30 jaar</option>
@@ -216,6 +219,7 @@ class MyFatherComponent extends PolymerElement {
 	   <div class="form-item-container">
 	    <label for="age-d">Leeftijd vader bij geboorte</label>
 		  <select id="age-d" on-change="changeAnswer" name="age-d">
+		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="20">Jonger dan 20 jaar</option>
 			 <option value="20-25">20 tot 25 jaar</option>
 			 <option value="25-30">25 tot 30 jaar</option>
@@ -315,6 +319,7 @@ class MyBothComponent extends PolymerElement {
 		<div class="form-item-container">
 		   <label for="age-difference">Leeftijd verschil tussen ouders</label>
 		   <select name='age-difference' id="age-difference" on-change="changeAnswer">
+		   <option disabled="disabled" selected="selected">Selecteer</option>
 			  <option value="less">Minder dan 5 jaar</option>
 			  <option value="more">Meer dan 5 jaar</option>
 		   </select>
@@ -322,6 +327,7 @@ class MyBothComponent extends PolymerElement {
 	   <div class="form-item-container">
 		  <label for="origin">Herkomst ouders</label>
 		  <select name='origin' id="origin" on-change="changeAnswer">
+		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="nl">Beide ouders Nederlands</option>
 			 <option value="not-nl">Beide ouders niet Nederlands</option>
 			 <option value="not-and-nl">Een van de ouders Nederlands en de andere niet Nederlands</option>
@@ -330,6 +336,7 @@ class MyBothComponent extends PolymerElement {
 	   <div class="form-item-container">
 		  <label for="track">Hulptraject</label>
 		  <select id="track" on-change="changeAnswer" name="track" on-change="changeAnswer">
+		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="no-help">Geen jeugdhulp zonder verblijf gehad</option>
 			 <option value="help">Jeugdhulp zonder verblijf gehad</option>
 		  </select>
@@ -340,18 +347,12 @@ class MyBothComponent extends PolymerElement {
     }
 
     changeAnswer(event) {
-        // alterernative = const target = event.targer
-        const {
-            target
-        } = event
-        // alternative: const options = event.options
-        const {
-            options
-        } = target
+        const target = event.targer
+        // const { target } = event
+        const options = event.options
+        // const { options } = target
         // gets the Name of the select
-        const {
-            name: inputName
-        } = target
+        const { name: inputName } = target
         // gets the selected value
         const selectedValue = options[target.selectedIndex].value
         console.log(selectedValue);
