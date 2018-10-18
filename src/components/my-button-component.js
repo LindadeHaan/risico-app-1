@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
 
 class MyNextButton extends PolymerElement {
     static get template() {
@@ -35,7 +35,7 @@ class MyNextButton extends PolymerElement {
 }
 
 
-window.customElements.define('my-next-button', MyNextButton);
+window.customElements.define("my-next-button", MyNextButton);
 
 // NEXT COMPONENT
 class MyPrevButton extends PolymerElement {
@@ -71,4 +71,4 @@ class MyPrevButton extends PolymerElement {
     }
 }
 
-window.customElements.define('my-prev-button', MyPrevButton);
+window.customElements.define("my-prev-button", MyPrevButton);

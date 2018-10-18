@@ -33,6 +33,10 @@ class MyHealthPage extends PolymerElement {
 			flex-wrap: wrap;
 			justify-content: flex-start;
 		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+		}
       </style>
 
 		<div class="card">
@@ -44,8 +48,10 @@ class MyHealthPage extends PolymerElement {
 
 				<my-health-component></my-health-component>
 
-				<my-prev-button></my-prev-button>
-				<my-next-button></my-next-button>
+				<div class="buttons">
+					<my-prev-button></my-prev-button>
+					<my-next-button></my-next-button>
+				</div>
 			</form>
 		</div>
     `;

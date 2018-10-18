@@ -156,6 +156,15 @@ class MyApp extends PolymerElement {
 			color: white;
 		}
 
+		#resultaten:hover {
+			color: var(--app-darkgray-color);
+		}
+
+		#resultaten {
+			color: white;
+			font-size: 1rem;
+		}
+
     </style>
 
 	<app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -188,8 +197,8 @@ class MyApp extends PolymerElement {
 					<app-header slot="header" condenses="" reveals="" effects="waterfall">
 						<app-toolbar>
 							<paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
-							<div id="main-title" main-title="">Risico App</div>
-							<a name="resultpage" href="[[rootPath]]resultpage">Resultaten</a>
+							<div id="main-title" main-title="">Kind veilig thuis</div>
+							<a name="resultpage" id="resultaten" href="[[rootPath]]resultpage">Resultaten</a>
 						</app-toolbar>
 					</app-header>
 

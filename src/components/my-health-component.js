@@ -1,17 +1,14 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
-import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
-import { setValueToFactor } from '../functions/setValueToFactor.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { setNewLocalStorage } from "../functions/setNewLocalStorage.js";
+import { getLocalStorageValue } from "../functions/getLocalStorageValue.js";
+import { setValueToFactor } from "../functions/setValueToFactor.js";
 
 class MyHealthComponent extends PolymerElement {
   static get template() {
     return html`
 
-	<style include="shared-styles">
-	</style>
-
+	<style include="shared-styles"></style>
 	<fieldset>
-
 		<div class="form-item-container">
 			<label for="victim">Als slachtoffer bekend bij slachtofferhulp</label>
 			<select id="victim" on-change="changeAnswer" name="victim">
@@ -19,8 +16,6 @@ class MyHealthComponent extends PolymerElement {
 				<option value="yes">Ja</option>
 			</select>
 		</div>
-
-
 	</fieldset>
 
     `;
@@ -36,7 +31,7 @@ class MyHealthComponent extends PolymerElement {
 	  // gets the selected value
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
-	  setNewLocalStorage(inputName, selectedValue, 'health')
+	  setNewLocalStorage(inputName, selectedValue, "health")
 
 	  if (inputName === "victim") {
 		  if (selectedValue === "yes") {
@@ -48,9 +43,9 @@ class MyHealthComponent extends PolymerElement {
 	  }
 
 	  try {
-		  window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		  window.localStorage.setItem("factors", JSON.stringify(window.factors))
 		  // triggers and event, which in this case is fake
-		  document.dispatchEvent(new Event ('launchEvent'))
+		  document.dispatchEvent(new Event ("launchEvent"))
 	  } catch (error) {
 		  throw new Error (error)
 	  }
@@ -69,7 +64,7 @@ class MyHealthComponent extends PolymerElement {
 		  // acces via shadowroot html elements with selectNames
 		  const select = this.shadowRoot.getElementById(selectNames)
 		  //  get localStorage
-		  const valueLocalStorage = getLocalStorageValue('health', selectNames)
+		  const valueLocalStorage = getLocalStorageValue("health", selectNames)
 		  console.log(valueLocalStorage)
 
 		  if (valueLocalStorage) {
@@ -81,4 +76,4 @@ class MyHealthComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-health-component', MyHealthComponent);
+window.customElements.define("my-health-component", MyHealthComponent);

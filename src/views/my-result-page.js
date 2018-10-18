@@ -21,8 +21,8 @@ class myResultPage extends PolymerElement {
 		   		justify-content: flex-start;
 		   }
 		</style>
-		<div class="card">
-		<h1>Resultaten</h1>
+		<div class="card extra-padding">
+		<h1 id="resultaten">Resultaten</h1>
 			<h3 class="percentage">[[calculateRiskPercentage()]]%</h3>
 			<p> 0 - 2%: Laag risico</p>
 			<p>2 - 5%: Middelmatig risico</p>

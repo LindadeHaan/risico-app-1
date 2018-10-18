@@ -1,7 +1,7 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
-import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
-import { setValueToFactor } from '../functions/setValueToFactor.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { setNewLocalStorage } from "../functions/setNewLocalStorage.js";
+import { getLocalStorageValue } from "../functions/getLocalStorageValue.js";
+import { setValueToFactor } from "../functions/setValueToFactor.js";
 
 
 class MyHouseComponent extends PolymerElement {
@@ -9,37 +9,35 @@ class MyHouseComponent extends PolymerElement {
     return html`
 
 
-	<style include="shared-styles">
-
-	</style>
+	<style include="shared-styles"></style>
 
 	<fieldset>
 		<legend>Huisvesting</legend>
 		<div class="form-item-container">
 			<label for="living">Soort woning</label>
 			<select id="living" on-change="changeAnswer" name="living">
-					<option disabled="disabled" selected="selected">Selecteer</option>
-					<option value="own">Eigen woning</option>
-					<option value="hire">Huurwoning met huurtoeslag</option>
-					<option value="no-hire">Huurwoning zonder huurtoeslag</option>
-					<option value="unknown">Onbekend</option>
+				<option disabled="disabled" selected="selected">Selecteer</option>
+				<option value="own">Eigen woning</option>
+				<option value="hire">Huurwoning met huurtoeslag</option>
+				<option value="no-hire">Huurwoning zonder huurtoeslag</option>
+				<option value="unknown">Onbekend</option>
 			</select>
 		</div>
 		<div class="form-item-container">
 			<label for="household">Type huishouden</label>
 			<select id="household" on-change="changeAnswer" name="household">
-					<option disabled="disabled" selected="selected">Selecteer</option>
-					<option value="oneparent">Eenouderhuishouden</option>
-					<option value="married-kids">Gehuwd paar met kinderen</option>
-					<option value="not-married-kids">Niet-gehuwd paar met kinderen</option>
-					<option value="married-no-kids">Gehuwd paar zonder kinderen</option>
-					<option value="institutional">Institutioneel huishouden</option>
-					<option value="not-married-no-kids">Niet-gehuwd paar zonder kinderen</option>
-					<option value="other">Overig huishouden</option>
-					<option value="unknown">Onbekend huishouden</option>
+				<option disabled="disabled" selected="selected">Selecteer</option>
+				<option value="oneparent">Eenouderhuishouden</option>
+				<option value="married-kids">Gehuwd paar met kinderen</option>
+				<option value="not-married-kids">Niet-gehuwd paar met kinderen</option>
+				<option value="married-no-kids">Gehuwd paar zonder kinderen</option>
+				<option value="institutional">Institutioneel huishouden</option>
+				<option value="not-married-no-kids">Niet-gehuwd paar zonder kinderen</option>
+				<option value="other">Overig huishouden</option>
+				<option value="unknown">Onbekend huishouden</option>
 			</select>
 		</div>
-		</fieldset>
+</fieldset>
 
     `;
   }
@@ -54,7 +52,7 @@ class MyHouseComponent extends PolymerElement {
 	  // gets the selected value
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
-	  setNewLocalStorage(inputName, selectedValue, 'house')
+	  setNewLocalStorage(inputName, selectedValue, "house")
 
 
 	  	if (inputName === "living") {
@@ -90,9 +88,9 @@ class MyHouseComponent extends PolymerElement {
 
 
 	  	try {
-	  		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+	  		window.localStorage.setItem("factors", JSON.stringify(window.factors))
 	  		// triggers and event, which in this case is fake
-	  		document.dispatchEvent(new Event ('launchEvent'))
+	  		document.dispatchEvent(new Event ("launchEvent"))
 	  	} catch (error) {
 	  		throw new Error (error)
 	  	}
@@ -104,8 +102,8 @@ class MyHouseComponent extends PolymerElement {
 	  super.ready ()
 
   const selectNames = [
-	   'living',
-	   'household'
+	   "living",
+	   "household"
   ]
 
 	  // loop over selectNames, get all selectNames
@@ -114,7 +112,7 @@ class MyHouseComponent extends PolymerElement {
 		  // acces via shadowroot html elements with selectNames
 		  const select = this.shadowRoot.getElementById(selectNames)
 		  //  get localStorage
-		  const valueLocalStorage = getLocalStorageValue('house', selectNames)
+		  const valueLocalStorage = getLocalStorageValue("house", selectNames)
 		  console.log(valueLocalStorage)
 
 		  if (valueLocalStorage) {
@@ -126,7 +124,7 @@ class MyHouseComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-house-component', MyHouseComponent);
+window.customElements.define("my-house-component", MyHouseComponent);
 
 // NEXT COMPONENT
 
@@ -134,19 +132,12 @@ window.customElements.define('my-house-component', MyHouseComponent);
 class MyRelationshipComponent extends PolymerElement {
   static get template() {
     return html`
-
-
-
-		<style include="shared-styles">
-
-		</style>
-
+		<style include="shared-styles"></style>
 		<fieldset>
 			<legend>Relaties</legend>
 			<div class="form-item-container">
 				<label for="divorce">Ouders gescheiden</label>
 				<select id="divorce" on-change="changeAnswer" name="divorce">
-
 					<option value="no">Nee</option>
 					<option value="yes">Ja</option>
 				</select>
@@ -165,7 +156,7 @@ class MyRelationshipComponent extends PolymerElement {
 	// gets the selected value
 	const selectedValue = options[target.selectedIndex].value
 	console.log(selectedValue);
-	setNewLocalStorage(inputName, selectedValue, 'house')
+	setNewLocalStorage(inputName, selectedValue, "house")
 
 
 		if (inputName === "divorce") {
@@ -177,9 +168,9 @@ class MyRelationshipComponent extends PolymerElement {
 		}
 
 		try {
-			window.localStorage.setItem('factors', JSON.stringify(window.factors))
+			window.localStorage.setItem("factors", JSON.stringify(window.factors))
 			// triggers and event, which in this case is fake
-			document.dispatchEvent(new Event ('launchEvent'))
+			document.dispatchEvent(new Event ("launchEvent"))
 		} catch (error) {
 			throw new Error (error)
 		}
@@ -190,7 +181,7 @@ class MyRelationshipComponent extends PolymerElement {
 	super.ready ()
 
   const selectNames = [
-	 'divorce'
+	 "divorce"
   ]
 
 	// loop over selectNames, get all selectNames
@@ -199,7 +190,7 @@ class MyRelationshipComponent extends PolymerElement {
 		// acces via shadowroot html elements with selectNames
 		const select = this.shadowRoot.getElementById(selectNames)
 		//  get localStorage
-		const valueLocalStorage = getLocalStorageValue('house', selectNames)
+		const valueLocalStorage = getLocalStorageValue("house", selectNames)
 		console.log(valueLocalStorage)
 
 		if (valueLocalStorage) {
@@ -211,4 +202,4 @@ class MyRelationshipComponent extends PolymerElement {
 
 }
 
-window.customElements.define('my-relationship-component', MyRelationshipComponent);
+window.customElements.define("my-relationship-component", MyRelationshipComponent);

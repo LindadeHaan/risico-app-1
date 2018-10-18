@@ -25,14 +25,16 @@ class myGeneralPage extends PolymerElement {
       <style include="shared-styles">
         :host {
           display: block;
-
           padding: 10px;
         }
 		.flex {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content:flex-start;
-
+		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
 		}
       </style>
 
@@ -43,7 +45,7 @@ class myGeneralPage extends PolymerElement {
 			<my-mother-component></my-mother-component>
 			<my-father-component></my-father-component>
 			<my-both-component></my-both-component>
-			<div>
+			<div class="buttons">
 				<my-prev-button></my-prev-button>
 				<my-next-button></my-next-button>
 			</div>

@@ -32,6 +32,10 @@ class myWorkPage extends PolymerElement {
 		   		flex-wrap: wrap;
 		   		justify-content: flex-start;
 		   }
+		   .buttons {
+			   display: flex;
+			   justify-content: space-between;
+		   }
 		</style>
 		<div class="card">
 		   <h1>Werk & Opleiding</h1>

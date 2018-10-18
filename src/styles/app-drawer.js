@@ -64,11 +64,11 @@ a shadow root):
 */
 import '@polymer/polymer/polymer-legacy.js';
 
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
+import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 Polymer({
   _template: html`
     <style>
@@ -152,7 +152,7 @@ Polymer({
 
         width: 20px;
 
-        content: '';
+        content: "";
       }
 
       #contentContainer[swipe-open][position=right]::after {
@@ -199,7 +199,7 @@ Polymer({
     </div>
 `,
 
-  is: 'app-drawer',
+  is: "app-drawer",
 
   properties: {
     /**
@@ -223,7 +223,7 @@ Polymer({
      * 'end'). 'start' computes to left and 'end' to right in LTR layout and
      * vice versa in RTL layout.
      */
-    align: {type: String, value: 'left'},
+    align: {type: String, value: "left"},
 
     /**
      * The computed, read-only position of the drawer on the screen ('left' or
@@ -248,10 +248,10 @@ Polymer({
   },
 
   observers: [
-    'resetLayout(position, isAttached)',
-    '_resetPosition(align, isAttached)',
-    '_styleTransitionDuration(transitionDuration)',
-    '_openedPersistentChanged(opened, persistent)'
+    "resetLayout(position, isAttached)",
+    "_resetPosition(align, isAttached)",
+    "_styleTransitionDuration(transitionDuration)",
+    "_openedPersistentChanged(opened, persistent)"
   ],
 
   _translateOffset: 0,
@@ -264,19 +264,19 @@ Polymer({
   attached: function() {
     afterNextRender(this, function() {
       this._boundEscKeydownHandler = this._escKeydownHandler.bind(this);
-      this.addEventListener('keydown', this._tabKeydownHandler.bind(this));
+      this.addEventListener("keydown", this._tabKeydownHandler.bind(this));
 
       // Only listen for horizontal track so you can vertically scroll
       // inside the drawer.
-      this.listen(this, 'track', '_track');
-      this.setScrollDirection('y');
+      this.listen(this, "track", "_track");
+      this.setScrollDirection("y");
     });
 
-    this.fire('app-reset-layout');
+    this.fire("app-reset-layout");
   },
 
   detached: function() {
-    document.removeEventListener('keydown', this._boundEscKeydownHandler);
+    document.removeEventListener("keydown", this._boundEscKeydownHandler);
   },
 
   /**
@@ -310,16 +310,16 @@ Polymer({
   },
 
   _isRTL: function() {
-    return window.getComputedStyle(this).direction === 'rtl';
+    return window.getComputedStyle(this).direction === "rtl";
   },
 
   _resetPosition: function() {
     switch (this.align) {
-      case 'start':
-        this._setPosition(this._isRTL() ? 'right' : 'left');
+      case "start":
+        this._setPosition(this._isRTL() ? "right" : "left");
         return;
-      case 'end':
-        this._setPosition(this._isRTL() ? 'left' : 'right');
+      case "end":
+        this._setPosition(this._isRTL() ? "left" : "right");
         return;
     }
     this._setPosition(this.align);
@@ -343,13 +343,13 @@ Polymer({
     event.preventDefault();
 
     switch (event.detail.state) {
-      case 'start':
+      case "start":
         this._trackStart(event);
         break;
-      case 'track':
+      case "track":
         this._trackMove(event);
         break;
-      case 'end':
+      case "end":
         this._trackEnd(event);
         break;
     }
@@ -360,7 +360,7 @@ Polymer({
 
     var rect = this.$.contentContainer.getBoundingClientRect();
     this._savedWidth = rect.width;
-    if (this.position === 'left') {
+    if (this.position === "left") {
       this._translateOffset = rect.left;
     } else {
       this._translateOffset = rect.right - window.innerWidth;
@@ -371,7 +371,7 @@ Polymer({
     // Disable transitions since style attributes will reflect user track
     // events.
     this._styleTransitionDuration(0);
-    this.style.visibility = 'visible';
+    this.style.visibility = "visible";
   },
 
   _trackMove: function(event) {
@@ -385,7 +385,7 @@ Polymer({
   _trackEnd: function(event) {
     var x = event.detail.dx + this._translateOffset;
     var drawerWidth = this.getWidth();
-    var isPositionLeft = this.position === 'left';
+    var isPositionLeft = this.position === "left";
     var isInEndState = isPositionLeft ? (x >= 0 || x <= -drawerWidth) :
                                         (x <= 0 || x >= drawerWidth);
 

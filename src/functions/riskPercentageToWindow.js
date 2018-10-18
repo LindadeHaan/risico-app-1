@@ -1,6 +1,8 @@
+// Maikel helped
+
 export const riskAssessmentToWindow = () => {
 	// gets all the factors
-	const factors = window.localStorage.getItem('factors') || []
+	const factors = window.localStorage.getItem("factors") || []
 
 	// puts the factors on 0 if they haven't been changed
 	if(!factors.length > 0) {
@@ -111,14 +113,14 @@ export const riskAssessmentToWindow = () => {
 			}
 		]
 		try {
-			window.localStorage.setItem('factors', JSON.stringify(window.factors))
+			window.localStorage.setItem("factors", JSON.stringify(window.factors))
 		} catch (error) {
 			throw new Error (error)
 		}
 	} else {
 		try {
 			// write js in json to window
-			window.factors = JSON.parse(window.localStorage.getItem('factors'))
+			window.factors = JSON.parse(window.localStorage.getItem("factors"))
 		} catch (error) {
 			throw new Error (error)
 		}

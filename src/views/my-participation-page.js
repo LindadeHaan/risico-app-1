@@ -31,18 +31,19 @@ class MyParticipationPage extends PolymerElement {
 			justify-content:flex-start;
 
 		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+		}
       </style>
 	  <div class="card">
-
 			  <h1>Maatschappelijke Participatie</h1>
-
-
-		  <form>
-
+		<form>
 			<my-participation-component></my-participation-component>
-
-		  	<my-prev-button></my-prev-button>
-		  	<my-next-button></my-next-button>
+			<div class="buttons">
+				<my-prev-button></my-prev-button>
+				<my-next-button></my-next-button>
+			</div>
 		  </form>
 	  </div>
     `;

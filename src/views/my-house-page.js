@@ -31,6 +31,10 @@ class MyHousePage extends PolymerElement {
 			flex-wrap: wrap;
 			justify-content: flex-start;
 		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+		}
       </style>
 
 		<div class="card">
@@ -38,8 +42,10 @@ class MyHousePage extends PolymerElement {
 			<form>
 				<my-house-component></my-house-component>
 				<my-relationship-component></my-relationship-component>
-				<my-prev-button></my-prev-button>
-				<my-next-button></my-next-button>
+				<div class="buttons">
+					<my-prev-button></my-prev-button>
+					<my-next-button></my-next-button>
+				</div>
 			</form>
 		</div>
     `;

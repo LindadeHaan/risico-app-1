@@ -1,11 +1,11 @@
 // needs the polymer-element to be able to make a component
 // to write html
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
 
 
-import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
-import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
-import { setValueToFactor } from '../functions/setValueToFactor.js';
+import { setNewLocalStorage } from "../functions/setNewLocalStorage.js";
+import { getLocalStorageValue } from "../functions/getLocalStorageValue.js";
+import { setValueToFactor } from "../functions/setValueToFactor.js";
 
 // component of the Child
 class MyChildComponent extends PolymerElement {
@@ -17,33 +17,34 @@ class MyChildComponent extends PolymerElement {
 	</style>
 
 	<fieldset>
-	   <!-- KIND -->
-	   <legend>Kind</legend>
-	   <div class="form-item-container">
-		  <label for="gender">Geslacht kind</label>
-		  <select id="gender" on-change="changeAnswer" name="gender">
-		  	<option disabled="disabled" selected="selected">Selecteer</option>
-			 <option value="female">Meisje</option>
-			 <option value="male">Jongen</option>
-		  </select>
-	   </div>
-	   <div class="form-item-container">
-		  <label for="age-k">Leeftijd kind</label>
-		  <select id="age-k" on-change="changeAnswer" name="age-k">
-		  <option disabled="disabled" selected="selected">Selecteer</option>
-			 <option value="0-4">0 tot 4 jaar</option>
-			 <option value="4-8">4 tot 8 jaar</option>
-			 <option value="8-12">8 tot 12 jaar</option>
-			 <option value="12-16">12 tot 16 jaar</option>
-			 <option value="16-18">16 tot 18 jaar</option>
-		  </select>
-	   </div>
-	</fieldset>
+		<!-- KIND -->
+		<legend>Kind</legend>
+		<div class="form-item-container">
+			<label for="gender">Geslacht kind</label>
+			<select id="gender" on-change="changeAnswer" name="gender">
+			  	<option disabled="disabled" selected="selected">Selecteer</option>
+				 <option value="female">Meisje</option>
+				 <option value="male">Jongen</option>
+			  </select>
+		</div>
+		<div class="form-item-container">
+			<label for="age-k">Leeftijd kind</label>
+			<select id="age-k" on-change="changeAnswer" name="age-k">
+			  <option disabled="disabled" selected="selected">Selecteer</option>
+				 <option value="0-4">0 tot 4 jaar</option>
+				 <option value="4-8">4 tot 8 jaar</option>
+				 <option value="8-12">8 tot 12 jaar</option>
+				 <option value="12-16">12 tot 16 jaar</option>
+				 <option value="16-18">16 tot 18 jaar</option>
+			  </select>
+		</div>
+		</fieldset>
 
     `;
     }
 
 // funtion that happens when the answer is changed
+// Maikel helped
     changeAnswer(event) {
 		// look for a target in the event
         const target = event.target
@@ -55,7 +56,7 @@ class MyChildComponent extends PolymerElement {
         // gets the selected value
 
         const selectedValue = options[target.selectedIndex].value
-        setNewLocalStorage(inputName, selectedValue, 'general')
+        setNewLocalStorage(inputName, selectedValue, "general")
 
         if (inputName === "gender") {
             if (selectedValue === "male") {
@@ -64,11 +65,11 @@ class MyChildComponent extends PolymerElement {
                 setValueToFactor(inputName, 0)
             }
         }
-
+		// Maikel helped
         try {
-            window.localStorage.setItem('factors', JSON.stringify(window.factors))
+            window.localStorage.setItem("factors", JSON.stringify(window.factors))
             // triggers and event, which in this case is fake
-            document.dispatchEvent(new Event('launchEvent'))
+            document.dispatchEvent(new Event("launchEvent"))
         } catch (error) {
             throw new Error(error)
         }
@@ -84,11 +85,12 @@ class MyChildComponent extends PolymerElement {
 
         // loop over selectNames, get all selectNames
         // map loop
+		// Maikel helped
         selectNames.map(selectNames => {
             // acces via shadowroot html elements with selectNames
             const select = this.shadowRoot.getElementById(selectNames)
             //  get localStorage
-            const valueLocalStorage = getLocalStorageValue('general', selectNames)
+            const valueLocalStorage = getLocalStorageValue("general", selectNames)
             console.log(valueLocalStorage)
 
             if (valueLocalStorage) {
@@ -99,7 +101,7 @@ class MyChildComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-child-component', MyChildComponent);
+window.customElements.define("my-child-component", MyChildComponent);
 
 // NEXT COMPONENT
 
@@ -130,26 +132,20 @@ class MyMotherComponent extends PolymerElement {
 
     `;
     }
-
+	// Maikel helped
     changeAnswer(event) {
-        // alterernative = const target = event.targer
-        const {
-            target
-        } = event
-        // alternative: const options = event.options
-        const {
-            options
-        } = target
+        const target = event.target
+        // const {	target } = event
+        const options = event.options
+        // const {	options	} = target
         // gets the Name of the select
-        const {
-            name: inputName
-        } = target
+        const {	name: inputName	} = target
         // gets the selected value
         const selectedValue = options[target.selectedIndex].value
         console.log(selectedValue);
-        setNewLocalStorage(inputName, selectedValue, 'general')
+        setNewLocalStorage(inputName, selectedValue, "general")
 
-
+		// Maikel helped
         if (inputName === "age-m") {
             if (selectedValue === "20") {
                 setValueToFactor(inputName, 0.45149781)
@@ -169,9 +165,9 @@ class MyMotherComponent extends PolymerElement {
         }
 
         try {
-            window.localStorage.setItem('factors', JSON.stringify(window.factors))
+            window.localStorage.setItem("factors", JSON.stringify(window.factors))
             // triggers and event, which in this case is fake
-            document.dispatchEvent(new Event('launchEvent'))
+            document.dispatchEvent(new Event("launchEvent"))
         } catch (error) {
             throw new Error(error)
         }
@@ -181,16 +177,16 @@ class MyMotherComponent extends PolymerElement {
         super.ready()
 
         const selectNames = [
-            'age-m'
+            "age-m"
         ]
-
+		// Maikel helped
         // loop over selectNames, get all selectNames
         // map loop
         selectNames.map(selectNames => {
             // acces via shadowroot html elements with selectNames
             const select = this.shadowRoot.getElementById(selectNames)
             //  get localStorage
-            const valueLocalStorage = getLocalStorageValue('general', selectNames)
+            const valueLocalStorage = getLocalStorageValue("general", selectNames)
             console.log(valueLocalStorage)
 
             if (valueLocalStorage) {
@@ -203,7 +199,7 @@ class MyMotherComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-mother-component', MyMotherComponent);
+window.customElements.define("my-mother-component", MyMotherComponent);
 
 class MyFatherComponent extends PolymerElement {
     static get template() {
@@ -232,7 +228,7 @@ class MyFatherComponent extends PolymerElement {
 
     `;
     }
-
+	// Maikel helped
     changeAnswer(event) {
         // alterernative = const target = event.targer
         const {
@@ -249,7 +245,7 @@ class MyFatherComponent extends PolymerElement {
         // gets the selected value
         const selectedValue = options[target.selectedIndex].value
         console.log(selectedValue);
-        setNewLocalStorage(inputName, selectedValue, 'general')
+        setNewLocalStorage(inputName, selectedValue, "general")
 
         if (inputName === "age-d") {
             if (selectedValue === "20") {
@@ -270,19 +266,26 @@ class MyFatherComponent extends PolymerElement {
         }
 
         try {
-            window.localStorage.setItem('factors', JSON.stringify(window.factors))
+            window.localStorage.setItem("factors", JSON.stringify(window.factors))
             // triggers and event, which in this case is fake
-            document.dispatchEvent(new Event('launchEvent'))
+            document.dispatchEvent(new Event("launchEvent"))
         } catch (error) {
             throw new Error(error)
         }
     }
 
     ready() {
+		// super() calls the constructor of the element's superclass (parent class).
+		// If an element's definition defines a class that extends
+		// another class and super() is not called explicitly,
+		// the element calls the constructor of the superclass by default.
+		// https://stackoverflow.com/questions/45471606/when-to-use-constructor-and-super-in-polymer-2-0
+
+		// That will invoke the ready function in Element when your component is ready.
         super.ready()
 
         const selectNames = [
-            'age-d'
+            "age-d"
         ]
 
         // loop over selectNames, get all selectNames
@@ -291,7 +294,7 @@ class MyFatherComponent extends PolymerElement {
             // acces via shadowroot html elements with selectNames
             const select = this.shadowRoot.getElementById(selectNames)
             //  get localStorage
-            const valueLocalStorage = getLocalStorageValue('general', selectNames)
+            const valueLocalStorage = getLocalStorageValue("general", selectNames)
             console.log(valueLocalStorage)
 
             if (valueLocalStorage) {
@@ -304,7 +307,7 @@ class MyFatherComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-father-component', MyFatherComponent);
+window.customElements.define("my-father-component", MyFatherComponent);
 
 class MyBothComponent extends PolymerElement {
     static get template() {
@@ -318,7 +321,7 @@ class MyBothComponent extends PolymerElement {
 	<legend>Beide</legend>
 		<div class="form-item-container">
 		   <label for="age-difference">Leeftijd verschil tussen ouders</label>
-		   <select name='age-difference' id="age-difference" on-change="changeAnswer">
+		   <select name="age-difference" id="age-difference" on-change="changeAnswer">
 		   <option disabled="disabled" selected="selected">Selecteer</option>
 			  <option value="less">Minder dan 5 jaar</option>
 			  <option value="more">Meer dan 5 jaar</option>
@@ -326,7 +329,7 @@ class MyBothComponent extends PolymerElement {
 		</div>
 	   <div class="form-item-container">
 		  <label for="origin">Herkomst ouders</label>
-		  <select name='origin' id="origin" on-change="changeAnswer">
+		  <select name="origin" id="origin" on-change="changeAnswer">
 		  <option disabled="disabled" selected="selected">Selecteer</option>
 			 <option value="nl">Beide ouders Nederlands</option>
 			 <option value="not-nl">Beide ouders niet Nederlands</option>
@@ -356,7 +359,7 @@ class MyBothComponent extends PolymerElement {
         // gets the selected value
         const selectedValue = options[target.selectedIndex].value
         console.log(selectedValue);
-        setNewLocalStorage(inputName, selectedValue, 'general')
+        setNewLocalStorage(inputName, selectedValue, "general")
 
 
         if (inputName === "age-difference") {
@@ -386,9 +389,9 @@ class MyBothComponent extends PolymerElement {
         }
 
         try {
-            window.localStorage.setItem('factors', JSON.stringify(window.factors))
+            window.localStorage.setItem("factors", JSON.stringify(window.factors))
             // triggers and event, which in this case is fake
-            document.dispatchEvent(new Event('launchEvent'))
+            document.dispatchEvent(new Event("launchEvent"))
         } catch (error) {
             throw new Error(error)
         }
@@ -398,9 +401,9 @@ class MyBothComponent extends PolymerElement {
         super.ready()
 
         const selectNames = [
-            'age-difference',
-            'origin',
-            'track'
+            "age-difference",
+            "origin",
+            "track"
         ]
 
         // loop over selectNames, get all selectNames
@@ -409,7 +412,7 @@ class MyBothComponent extends PolymerElement {
             // acces via shadowroot html elements with selectNames
             const select = this.shadowRoot.getElementById(selectNames)
             //  get localStorage
-            const valueLocalStorage = getLocalStorageValue('general', selectNames)
+            const valueLocalStorage = getLocalStorageValue("general", selectNames)
             console.log(valueLocalStorage)
 
             if (valueLocalStorage) {
@@ -422,4 +425,4 @@ class MyBothComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-both-component', MyBothComponent);
+window.customElements.define("my-both-component", MyBothComponent);

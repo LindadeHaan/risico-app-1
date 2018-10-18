@@ -1,57 +1,51 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
-import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
-import { setValueToFactor } from '../functions/setValueToFactor.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { setNewLocalStorage } from "../functions/setNewLocalStorage.js";
+import { getLocalStorageValue } from "../functions/getLocalStorageValue.js";
+import { setValueToFactor } from "../functions/setValueToFactor.js";
 
 
 class MyJusticeComponent extends PolymerElement {
   static get template() {
     return html`
 
-	<style include="shared-styles">
-	</style>
-
+	<style include="shared-styles"></style>
 	<fieldset>
-		<div class="form-item-container">
-			<label for="crime-k">Kind in het verleden verdacht geweest van een delict</label>
-			<select id="crime-k" on-change="changeAnswer" name="crime-k">
-
-				<option value="no">Nee</option>
-				<option value="yes">Ja</option>
-			</select>
-		</div>
-		<div class="form-item-container">
-			<label for="crime-halt">Kind in aanraking geweest met bureau HALT voor een delict</label>
-			<select id="crime-halt" on-change="changeAnswer" name="crime-halt">
-
-				<option value="no">Nee</option>
-						<option value="yes">Ja</option>
-					</select>
-				</div>
-				<div class="form-item-container">
-					<label for="crime-p">Vader of moeder verdacht van delict in het verleden</label>
-					<select id="crime-p" on-change="changeAnswer" name="crime-p">
-
-						<option selected="selected" value="no">Nee</option>
-						<option value="yes">Ja</option>
-					</select>
-				</div>
-				<div class="form-item-container">
-					<label for="crime-d">Vader verdacht van delict in het verleden</label>
-					<select id="crime-d" on-change="changeAnswer" name="crime-d">
-						<option value="no">Nee</option>
-						<option value="yes">Ja</option>
-					</select>
-				</div>
-				<div class="form-item-container">
-					<label for="crime-m">Moeder verdacht van delict in het verleden</label>
-					<select id="crime-m" on-change="changeAnswer" name="crime-m">
-						<option value="no">Nee</option>
-						<option value="yes">Ja</option>
-					</select>
-				</div>
+	   <div class="form-item-container">
+	      <label for="crime-k">Kind in het verleden verdacht geweest van een delict</label>
+	      <select id="crime-k" on-change="changeAnswer" name="crime-k">
+	         <option value="no">Nee</option>
+	         <option value="yes">Ja</option>
+	      </select>
+	   </div>
+	   <div class="form-item-container">
+	      <label for="crime-halt">Kind in aanraking geweest met bureau HALT voor een delict</label>
+	      <select id="crime-halt" on-change="changeAnswer" name="crime-halt">
+	         <option value="no">Nee</option>
+	         <option value="yes">Ja</option>
+	      </select>
+	   </div>
+	   <div class="form-item-container">
+	      <label for="crime-p">Vader of moeder verdacht van delict in het verleden</label>
+	      <select id="crime-p" on-change="changeAnswer" name="crime-p">
+	         <option selected="selected" value="no">Nee</option>
+	         <option value="yes">Ja</option>
+	      </select>
+	   </div>
+	   <div class="form-item-container">
+	      <label for="crime-d">Vader verdacht van delict in het verleden</label>
+	      <select id="crime-d" on-change="changeAnswer" name="crime-d">
+	         <option value="no">Nee</option>
+	         <option value="yes">Ja</option>
+	      </select>
+	   </div>
+	   <div class="form-item-container">
+	      <label for="crime-m">Moeder verdacht van delict in het verleden</label>
+	      <select id="crime-m" on-change="changeAnswer" name="crime-m">
+	         <option value="no">Nee</option>
+	         <option value="yes">Ja</option>
+	      </select>
+	   </div>
 	</fieldset>
-
 
     `;
   }
@@ -66,7 +60,7 @@ class MyJusticeComponent extends PolymerElement {
    // gets the selected value
    const selectedValue = options[target.selectedIndex].value
    console.log(selectedValue);
-   setNewLocalStorage(inputName, selectedValue, 'justice')
+   setNewLocalStorage(inputName, selectedValue, "justice")
 
 
    	  	if (inputName === "crime-k") {
@@ -97,9 +91,9 @@ class MyJusticeComponent extends PolymerElement {
 
 
    	  	try {
-   	  		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+   	  		window.localStorage.setItem("factors", JSON.stringify(window.factors))
    	  		// triggers and event, which in this case is fake
-   	  		document.dispatchEvent(new Event ('launchEvent'))
+   	  		document.dispatchEvent(new Event ("launchEvent"))
    	  	} catch (error) {
    	  		throw new Error (error)
    	  	}
@@ -111,11 +105,11 @@ class MyJusticeComponent extends PolymerElement {
    super.ready ()
 
   const selectNames = [
-	  'crime-k',
-	  'crime-halt',
-	  'crime-p',
-	  'crime-d',
-	  'crime-m'
+	  "crime-k",
+	  "crime-halt",
+	  "crime-p",
+	  "crime-d",
+	  "crime-m"
   ]
 
    // loop over selectNames, get all selectNames
@@ -124,7 +118,7 @@ class MyJusticeComponent extends PolymerElement {
 	   // acces via shadowroot html elements with selectNames
 	   const select = this.shadowRoot.getElementById(selectNames)
 	   //  get localStorage
-	   const valueLocalStorage = getLocalStorageValue('justice', selectNames)
+	   const valueLocalStorage = getLocalStorageValue("justice", selectNames)
 	   console.log(valueLocalStorage)
 
 	   if (valueLocalStorage) {
@@ -137,4 +131,4 @@ class MyJusticeComponent extends PolymerElement {
 }
 
 
-window.customElements.define('my-justice-component', MyJusticeComponent);
+window.customElements.define("my-justice-component", MyJusticeComponent);

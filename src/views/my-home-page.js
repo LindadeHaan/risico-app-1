@@ -18,13 +18,9 @@ class MyHomePage extends PolymerElement {
 			justify-content:flex-start;
 
 		}
-		img {
-			height: 10rem;
-			margin-left: 10rem;
-		}
       </style>
 
-      <div class="card">
+      <div class="card extra-padding">
         <h1 id="introductie">Introductie</h1>
 
         <p>Welkom op de Risico App.</p>
