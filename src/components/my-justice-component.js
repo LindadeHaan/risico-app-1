@@ -1,6 +1,8 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
+
 
 class MyJusticeComponent extends PolymerElement {
   static get template() {
@@ -62,7 +64,45 @@ class MyJusticeComponent extends PolymerElement {
    const selectedValue = options[target.selectedIndex].value
    console.log(selectedValue);
    setNewLocalStorage(inputName, selectedValue, 'justice')
-  }
+
+
+   	  	if (inputName === "crime-k") {
+   	  		if (selectedValue === "yes") {
+   	  			setValueToFactor(inputName, 0.94737545)
+   	  		} else {
+   	  			setValueToFactor(inputName, 0)
+   	  		}
+   	  	} else if (inputName === "crime-halt") {
+   	  		if (selectedValue === "yes") {
+   	  			setValueToFactor(inputName, 0.36448201)
+   	  		} else {
+   	  			setValueToFactor(inputName, 0)
+   	  		}
+   		} else if (inputName === "crime-d") {
+   	  		if (selectedValue === "yes") {
+   	  			setValueToFactor(inputName, 0.50027131)
+   	  		} else {
+   	  			setValueToFactor(inputName, 0)
+   	  		}
+   		} else if (inputName === "crime-m") {
+   	  		if (selectedValue === "yes") {
+   	  			setValueToFactor(inputName, 0.50027131)
+   	  		} else {
+   	  			setValueToFactor(inputName, 0)
+   	  		}
+   		}
+
+
+   	  	try {
+   	  		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+   	  		// triggers and event, which in this case is fake
+   	  		document.dispatchEvent(new Event ('launchEvent'))
+   	  	} catch (error) {
+   	  		throw new Error (error)
+   	  	}
+   	  }
+
+
 
   ready () {
    super.ready ()

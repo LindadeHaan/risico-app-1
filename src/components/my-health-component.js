@@ -1,6 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
 
 class MyHealthComponent extends PolymerElement {
   static get template() {
@@ -22,7 +23,6 @@ class MyHealthComponent extends PolymerElement {
 
 	</fieldset>
 
-
     `;
   }
 
@@ -37,13 +37,30 @@ class MyHealthComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'health')
+
+	  if (inputName === "victim") {
+		  if (selectedValue === "yes") {
+			  console.log(setValueToFactor(inputName, 0.23639124))
+			  setValueToFactor(inputName, 0.23639124)
+		  } else {
+		  	setValueToFactor(inputName, 0)
+		  }
+	  }
+
+	  try {
+		  window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		  // triggers and event, which in this case is fake
+		  document.dispatchEvent(new Event ('launchEvent'))
+	  } catch (error) {
+		  throw new Error (error)
+	  }
   }
 
   ready () {
 	  super.ready ()
 
   const selectNames = [
-	  'victim'
+	  "victim"
   ]
 
 	  // loop over selectNames, get all selectNames

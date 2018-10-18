@@ -1,6 +1,8 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
+
 
 class MyHouseComponent extends PolymerElement {
   static get template() {
@@ -51,7 +53,50 @@ class MyHouseComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'house')
-  }
+
+
+	  	if (inputName === "living") {
+	  		if (selectedValue === "own") {
+	  			setValueToFactor(inputName, 0)
+	  		} else if (selectedValue === "hire") {
+	  			setValueToFactor(inputName, 0.3840103)
+	  		} else if (selectedValue === "no-hire") {
+	  			setValueToFactor(inputName, 0.40420458)
+	  		} else { // unknown
+	  			setValueToFactor(inputName, 2.40126358)
+	  		}
+	  	} else if (inputName === "household") {
+	  		if (selectedValue === "oneparent") {
+	  			setValueToFactor(inputName, 0.49608469)
+	  		} else if (selectedValue === "not-married-kids") {
+	  			setValueToFactor(inputName, 0.32693636)
+	  		} else if (selectedValue === "married-no-kids") {
+	  			setValueToFactor(inputName, 1.06108193)
+	  		} else if (selectedValue === "institutional") {
+	  			setValueToFactor(inputName, 1.92321053)
+	  		} else if (selectedValue === "not-married-no-kids") {
+	  			setValueToFactor(inputName, -14.15530169)
+	  		} else if (selectedValue === "other") {
+	  			setValueToFactor(inputName, 0.91364613)
+	  		} else if (selectedValue === "unknown") {
+	  			setValueToFactor(inputName, -13.81002181)
+	  		} else {
+	  			setValueToFactor(inputName, 0)
+	  		}
+		}
+
+
+
+	  	try {
+	  		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+	  		// triggers and event, which in this case is fake
+	  		document.dispatchEvent(new Event ('launchEvent'))
+	  	} catch (error) {
+	  		throw new Error (error)
+	  	}
+	  }
+
+
 
   ready () {
 	  super.ready ()
@@ -118,7 +163,25 @@ class MyRelationshipComponent extends PolymerElement {
 	const selectedValue = options[target.selectedIndex].value
 	console.log(selectedValue);
 	setNewLocalStorage(inputName, selectedValue, 'house')
-  }
+
+
+		if (inputName === "divorce") {
+			if (selectedValue === "yes") {
+				setValueToFactor(inputName, 0.27683414)
+			} else if (selectedValue === "no") {
+				setValueToFactor(inputName, 0)
+			}
+		}
+
+		try {
+			window.localStorage.setItem('factors', JSON.stringify(window.factors))
+			// triggers and event, which in this case is fake
+			document.dispatchEvent(new Event ('launchEvent'))
+		} catch (error) {
+			throw new Error (error)
+		}
+	}
+
 
   ready () {
 	super.ready ()

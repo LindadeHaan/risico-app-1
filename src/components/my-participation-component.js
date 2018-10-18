@@ -1,6 +1,8 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
+
 
 class MyParticipationComponent extends PolymerElement {
   static get template() {
@@ -81,7 +83,36 @@ class MyParticipationComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'participation')
+
+	  if (inputName === "participation-d") {
+		if (selectedValue === "work") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "no-work") {
+			setValueToFactor(inputName, 0.33771646)
+		} else { // unknown
+			setValueToFactor(inputName, 0.23485558)
+		}
+	} else if (inputName === "participation-m") {
+		if (selectedValue === "work") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "no-work") {
+			setValueToFactor(inputName, 0.36957624)
+		} else { // unknown
+			setValueToFactor(inputName, -0.95012155)
+		}
+	}
+
+
+
+	try {
+		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		// triggers and event, which in this case is fake
+		document.dispatchEvent(new Event ('launchEvent'))
+	} catch (error) {
+		throw new Error (error)
+	}
   }
+
 
   ready () {
 	  super.ready ()

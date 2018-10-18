@@ -1,6 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
 
 class MyWorkComponent extends PolymerElement {
   static get template() {
@@ -82,7 +83,87 @@ class MyWorkComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'work')
+
+
+	  if (inputName === "education-k") {
+		if (selectedValue === "no-help") { // regulier
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "help") { // niet-regulier
+			setValueToFactor(inputName, -0.33030829)
+		} else { // unknown
+			setValueToFactor(inputName, -0.76956641)
+		}
+	} else if (inputName === "level-k") {
+		if (selectedValue === "basic") {
+			setValueToFactor(inputName, 0.25231544)
+		} else if (selectedValue === "vmbo1") {
+			setValueToFactor(inputName, 0.87841913)
+		} else if (selectedValue === "vmbo2") {
+			setValueToFactor(inputName, 0.56881862)
+		} else if (selectedValue === "havo") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "vwo") {
+			setValueToFactor(inputName, 0.8356626)
+		} else { // unknown
+			setValueToFactor(inputName, 0)
+		}
+	} else if (inputName === "change-k") {
+		if (selectedValue === "up") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "down") {
+			setValueToFactor(inputName, 0.58732282)
+		} else { // unknown
+			setValueToFactor(inputName, -1.11681655)
+		}
+	} else if (inputName === "leave") {
+		if (selectedValue === "no-leave") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "not-applicable") {
+			setValueToFactor(inputName, 0.38735846)
+		} else if (selectedValue === "start") {
+			setValueToFactor(inputName, -13.64192657)
+		} else if (selectedValue === "leave") {
+			setValueToFactor(inputName, 0.34683899)
+		} else { // unknown
+			setValueToFactor(inputName, 0.80563824)
+		}
+	} else if (inputName === "level-d") {
+		if (selectedValue === "vmbo1") {
+			setValueToFactor(inputName, -0.21629522)
+		} else if (selectedValue === "vmbo2") {
+			setValueToFactor(inputName, 0.67119088)
+		} else if (selectedValue === "havo") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "vwo") {
+			setValueToFactor(inputName, -12.08994875)
+		} else { // unknown
+			setValueToFactor(inputName, 0.88463779)
+		}
+	} else if (inputName === "level-m") {
+		if (selectedValue === "vmbo1") {
+			setValueToFactor(inputName, 0.15935901)
+		} else if (selectedValue === "vmbo2") {
+			setValueToFactor(inputName, 0.03334141)
+		} else if (selectedValue === "havo") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "vwo") {
+			setValueToFactor(inputName, -13.03161926)
+		} else { // unknown
+			setValueToFactor(inputName, 0.03655114)
+		}
+	}
+
+
+
+	try {
+		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		// triggers and event, which in this case is fake
+		document.dispatchEvent(new Event ('launchEvent'))
+	} catch (error) {
+		throw new Error (error)
+	}
   }
+
 
   ready () {
 	  super.ready ()

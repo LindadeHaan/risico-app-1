@@ -12,6 +12,9 @@ import {
     PolymerElement,
     html
 } from '@polymer/polymer/polymer-element.js';
+import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
+import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
+import { setValueToFactor } from '../functions/setValueToFactor.js';
 import '../styles/shared-styles.js';
 import '../components/my-button-component.js';
 import '../components/my-general-component.js';

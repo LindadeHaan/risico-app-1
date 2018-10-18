@@ -1,7 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setNewLocalStorage } from '../functions/setNewLocalStorage.js';
 import { getLocalStorageValue } from '../functions/getLocalStorageValue.js';
-
+import { setValueToFactor } from '../functions/setValueToFactor.js';
 
 class MyChildComponent extends PolymerElement {
   static get template() {
@@ -47,14 +47,30 @@ class MyChildComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'general')
+
+	  if (inputName === "gender") {
+		  if (selectedValue === "male") {
+			  setValueToFactor(inputName, -0.12610868)
+		  } else {
+			  setValueToFactor(inputName, 0)
+		  }
+	  }
+
+	  try {
+		  window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		  // triggers and event, which in this case is fake
+		  document.dispatchEvent(new Event ('launchEvent'))
+	  } catch (error) {
+		  throw new Error (error)
+	}
   }
 
   ready () {
   	super.ready ()
 
 	const selectNames = [
-		'gender',
-	  	'age-k'
+		"gender",
+	  	"age-k"
 	]
 
 	  // loop over selectNames, get all selectNames
@@ -70,9 +86,7 @@ class MyChildComponent extends PolymerElement {
 			  select.value = valueLocalStorage
 		  }
 	  })
-
   }
-
 }
 
 
@@ -119,7 +133,34 @@ class MyMotherComponent extends PolymerElement {
 	const selectedValue = options[target.selectedIndex].value
 	console.log(selectedValue);
 	setNewLocalStorage(inputName, selectedValue, 'general')
-  }
+
+
+	if (inputName === "age-m") {
+		if (selectedValue === "20") {
+			setValueToFactor(inputName, 0.45149781)
+		} else if (selectedValue === "20-25") {
+			setValueToFactor(inputName, 0.10851786)
+		} else if (selectedValue === "25-30") {
+			setValueToFactor(inputName, -0.08840876)
+		} else if (selectedValue === "30-35") {
+			setValueToFactor(inputName, 0)
+		} else if (selectedValue === "35-40") {
+			setValueToFactor(inputName, 0.23987545)
+		} else if (selectedValue === "40") {
+			setValueToFactor(inputName, -0.11153052)
+		} else {
+			setValueToFactor(inputName, 0)
+		}
+	}
+
+	try {
+		window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		// triggers and event, which in this case is fake
+		document.dispatchEvent(new Event ('launchEvent'))
+	} catch (error) {
+		throw new Error (error)
+	}
+}
 
   ready () {
 	super.ready ()
@@ -187,6 +228,32 @@ class MyFatherComponent extends PolymerElement {
 	  const selectedValue = options[target.selectedIndex].value
 	  console.log(selectedValue);
 	  setNewLocalStorage(inputName, selectedValue, 'general')
+
+	  if (inputName === "age-d") {
+		  if (selectedValue === "20") {
+			  setValueToFactor(inputName, -0.00587023)
+		  } else if (selectedValue === "20-25") {
+			  setValueToFactor(inputName, 0.00587023)
+		  } else if (selectedValue === "25-30") {
+			  setValueToFactor(inputName, 0.031069)
+		  } else if (selectedValue === "30-35") {
+			  setValueToFactor(inputName, 0)
+		  } else if (selectedValue === "35-40") {
+			  setValueToFactor(inputName, -0.2162358)
+		  } else if (selectedValue === "40") {
+			  setValueToFactor(inputName, -0.32645414)
+		  } else {
+			  setValueToFactor(inputName, 0)
+		  }
+	  }
+
+	  try {
+		  window.localStorage.setItem('factors', JSON.stringify(window.factors))
+		  // triggers and event, which in this case is fake
+		  document.dispatchEvent(new Event ('launchEvent'))
+	  } catch (error) {
+		  throw new Error (error)
+	  }
   }
 
   ready () {
@@ -258,6 +325,35 @@ class MyBothComponent extends PolymerElement {
 		const selectedValue = options[target.selectedIndex].value
 		console.log(selectedValue);
 		setNewLocalStorage(inputName, selectedValue, 'general')
+
+
+		if (inputName === "origin") {
+			if (selectedValue === "nl") {
+				setValueToFactor(inputName, 0)
+			} else if (selectedValue === "not-nl") {
+				setValueToFactor(inputName, 0.16972268)
+			} else if (selectedValue === "not-and-nl") {
+				setValueToFactor(inputName, 0.08942976)
+			} else {
+				setValueToFactor(inputName, 0)
+			}
+		} else if (inputName === "track") {
+			if (selectedValue === "no-help") {
+				setValueToFactor(inputName, -0.00587023)
+			} else if (selectedValue === "help") {
+				setValueToFactor(inputName, 0.00587023)
+			} else {
+				setValueToFactor(inputName, 0)
+			}
+		}
+
+		try {
+			window.localStorage.setItem('factors', JSON.stringify(window.factors))
+			// triggers and event, which in this case is fake
+			document.dispatchEvent(new Event ('launchEvent'))
+		} catch (error) {
+			throw new Error (error)
+		}
 	}
 
 	ready () {

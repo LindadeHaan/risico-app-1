@@ -12,6 +12,7 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '../styles/shared-styles.js';
 import '../components/my-button-component.js';
 import '../components/my-justice-component.js';
+import { calculateRiskAssessment } from '../functions/calculateRiskAssessment.js'
 
 class MyJusticePage extends PolymerElement {
   static get template() {
@@ -36,9 +37,43 @@ class MyJusticePage extends PolymerElement {
 			<my-prev-button></my-prev-button>
 			<my-next-button></my-next-button>
 		  </form>
+
+		  <h3 class="percentage">[[calculateRiskPercentage()]]%</h3
+
 	  </div>
     `;
   }
+
+		  calculateRiskPercentage() {
+		   try {
+			   // return the function you wrote in calculateRiskAssessment.js
+			   // uitkomst van de formule schrijf je naar de local storage in json
+			   return calculateRiskAssessment(JSON.parse(window.localStorage.getItem('factors')))
+		   } catch (error) {
+			   throw new Error (error)
+		   }
+		}
+
+		ready () {
+		   super.ready()
+		   // launch fake event
+		   document.addEventListener('launchEvent', () => {
+			   	// door polymer zit t in de shadow root
+				// dus je kan niet direct ophalen
+				 const shadowDomNode = this.shadowRoot.querySelector('.percentage')
+				 console.log(shadowDomNode)
+					 try {
+						 // retrigger calculation when another option is clicked
+						 // bereken het percentage
+						 const calculatePercentage = calculateRiskAssessment(JSON.parse(window.localStorage.getItem('factors')))
+						 // add to h3
+						 shadowDomNode.textContent = `${calculatePercentage}%`
+					 } catch (error) {
+						 throw new Error (error)
+					 }
+		   })
+}
+
 }
 
 window.customElements.define('my-justice-page', MyJusticePage);

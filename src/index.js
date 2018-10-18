@@ -10,6 +10,7 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
+import { riskAssessmentToWindow } from '/src/functions/riskPercentageToWindow.js';
 // import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
 import '@polymer/app-layout/app-header/app-header.js';
@@ -23,6 +24,7 @@ import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import './my-icons.js';
 import './styles/app-drawer.js';
+
 
 
 window.addEventListener("load", function(event) {
@@ -75,8 +77,8 @@ window.addEventListener("load", function(event) {
 		  }
 	  ]
 	  window.localStorage.setItem('data', JSON.stringify(optionData))
-  }
-
+  	}
+	riskAssessmentToWindow()
 });
 
 // Gesture events like tap and track generated from touch will not be
