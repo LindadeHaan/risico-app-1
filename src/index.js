@@ -95,13 +95,6 @@ class MyApp extends PolymerElement {
           display: block;
         }
 
-		.menu {
-			/* margin-top: 3.2rem;  */
-    		height: 83%;
-    		display: flex;
-    		flex-direction: column;
-    		justify-content: space-around;
-		}
 
         app-drawer-layout:not([narrow]) [drawer-toggle] {
           display: none;
@@ -126,23 +119,23 @@ class MyApp extends PolymerElement {
 
         .drawer-list a {
 			display: block;
-      		/* margin: 0 16px; */
       		text-decoration: none;
       		color: var(--app-secondary-color);
 			width: 87%;
-
-			padding: 4vh 1rem;
-      		border-style: solid;
+			padding: 3.3vh 1rem;
+      		border-bottom-style: solid;
       		border-width: 1px;
-      		border-color: #d3d3d3;
+      		border-color: gray;
         }
 
 		.drawer-list a:hover {
-         	background-color: #eeeeee;
+         	background-color: #e3e1e1;
+
 			/* border-left-style: solid;
+
 			border-right-style: solid; */
-			width: auto;
-			margin-left: 16px;
+			/* width: auto; */
+			/* margin-left: 16px; */
 			/* padding: 0 16px; */
         }
 
@@ -152,9 +145,11 @@ class MyApp extends PolymerElement {
 
 
         .drawer-list a.iron-selected {
-          color: black;
-          font-weight: bold;
-		  width: auto;
+			background-color: var(--app-primary-color);
+          	color: white;
+          	font-weight: bold;
+		  	width: auto;
+			transition: background-color 0.5s;
         }
 
 		#main-title {
@@ -175,7 +170,7 @@ class MyApp extends PolymerElement {
 			<app-toolbar>Menu</app-toolbar>
 
 				<iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-					<div class="menu">
+
 						<a name="homepage" href="[[rootPath]]homepage">Home</a>
 						<a name="generalpage" href="[[rootPath]]generalpage">Algemeen</a>
 						<a name="workpage" href="[[rootPath]]workpage">Werk & opleiding</a>
@@ -183,7 +178,7 @@ class MyApp extends PolymerElement {
 						<a name="healthpage" href="[[rootPath]]healthpage">Geestelijke gezondheid</a>
 						<a name="participationpage" href="[[rootPath]]participationpage">Maatschappelijke participatie</a>
 						<a name="justicepage" href="[[rootPath]]justicepage">Justitie</a>
-					</div>
+
 				</iron-selector>
 		</app-drawer>
 

@@ -90,7 +90,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
 	  .form-item-container {
 		 margin: 1.5rem 0;
-		 width: 80%;
+		 width: 95%;
 		 display: flex;
 		 flex-direction: row;
 		 flex-wrap: wrap;
@@ -100,14 +100,9 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 	  }
 
 	  select {
-		  border-style: none;
-		  border-bottom: solid var(--app-primary-color) 2px;
-		  background-color: transparent;
-  		/* -webkit-appearance: none;
-  		-webkit-border-radius: 0px;
-		background: url("/src/styles/images/down-arrow.png") no-repeat right;
-		background-size: contain; */
-		padding-left: 2px;
+		 	border-style: none;
+			border-bottom: solid var(--app-primary-color) 2px;
+			padding-left: 2px;
 	  }
 	  legend {
 		  font-weight: bold;
