@@ -4,7 +4,7 @@
 - [Concept](#concept)
 - [Process](#process)
 - [Opinion](#opinion)
-- [Experience](#Experience)
+- [Experience](#experience)
 - [What I Used](#what-i-used)
 
 ## Install
@@ -41,6 +41,12 @@ npm start
 
 My app is an improved version of the old app. The happy colors and clean design make it easy and fun for the user to understand.
 
+<img src="https://github.com/jessiemasonx/images/blob/master/algemeen.png" width="800">  
+
+
+
+<img src="https://github.com/jessiemasonx/images/blob/master/home.png" width="800">
+
 ### Why Use This App?
 - It has a clear introduction on the first page where you find out how to use it.
 - You can see the results whenever you want. You can reach the result page from every page.
@@ -50,7 +56,7 @@ My app is an improved version of the old app. The happy colors and clean design 
 - Some questions rely on the answers to the other questions. For example, a question could be irrelevant if the answer to the question above is `no`. In this case, the user won't be able to answer this question, unless the question above is answered with `yes`. This saves time for the user because he or she can skip this question immediately after seeing it's not relevant.
 
 
-## Proces
+## Process
 
 ### First week
 
@@ -64,8 +70,7 @@ My app is an improved version of the old app. The happy colors and clean design 
 I wasn't at school. But in the evening I made a top 3 of frameworks, based on what information I could find online.
 1. Vue
 2. React
-3. Oolymer
-
+3. Polymer
 
 #### Wednesday
 - Found out I was going to be working with Polymer.
@@ -104,7 +109,6 @@ I wasn't at school. But in the evening I made a top 3 of frameworks, based on wh
 
 #### Friday
 - Deadline day.
-
 
 
 ## Opinion
