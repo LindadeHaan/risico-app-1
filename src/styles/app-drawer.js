@@ -114,6 +114,7 @@ Polymer({
         bottom: 0;
         left: 0;
 
+
         width: var(--app-drawer-width, 256px);
         padding: 120px 0;
 
@@ -162,6 +163,7 @@ Polymer({
       #contentContainer[opened] {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+		background-color: var(--app-lightgray-color);
       }
 
       #scrim {

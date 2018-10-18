@@ -1,13 +1,3 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
-
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
 import { riskAssessmentToWindow } from '/src/functions/riskPercentageToWindow.js';
@@ -28,10 +18,12 @@ import './styles/app-drawer.js';
 
 
 window.addEventListener("load", function(event) {
-  console.log("All resources finished loading!");
+  console.log("Everything loaded!");
 
+	// get the data, or an empty object
   const data = window.localStorage.getItem('data') || []
 
+// if there is no data
   if (!data.length > 0) {
 	  const optionData = [
 		  {
@@ -93,15 +85,23 @@ setRootPath(MyAppGlobals.rootPath);
 class MyApp extends PolymerElement {
   static get template() {
     return html`
-      <style>
+    <style>
         :host {
-          --app-primary-color: #AF030C;
-          --app-secondary-color: #6d020c;
+          --app-primary-color: #FF7300;
+          --app-secondary-color: #be5e00;
 		  --app-darkgray-color: #434343;
-		  --app-lightgray-color: #d3d3d3;
+		  --app-lightgray-color: #f2f2f2;
 
           display: block;
         }
+
+		.menu {
+			/* margin-top: 3.2rem;  */
+    		height: 83%;
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: space-around;
+		}
 
         app-drawer-layout:not([narrow]) [drawer-toggle] {
           display: none;
@@ -109,10 +109,10 @@ class MyApp extends PolymerElement {
 
         app-header {
 		 background: #6d0007;
-		 background: -moz-linear-gradient(left, #6d0007 0%, #af030c 94%, #a90329 100%);
-		 background: -webkit-linear-gradient(left, #6d0007 0%,#af030c 94%,#a90329 100%);
-		 background: linear-gradient(to right, #6d0007 0%,#af030c 94%,#a90329 100%);
-		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0007', endColorstr='#a90329',GradientType=1 );
+		 background: -moz-linear-gradient(left, var(--app-primary-color) 0%, #ee7600 94%, var(--app-secondary-color) 100%);
+		 background: -webkit-linear-gradient(left, var(--app-primary-color) 0%,#ee7600 94%, var(--app-secondary-color) 100%);
+		 background: linear-gradient(to right, var(--app-primary-color) 0%, #ee7600 94%, var(--app-secondary-color) 100%);
+		 /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0007', endColorstr='#a90329',GradientType=1 ); */
         }
 
 
@@ -125,15 +125,16 @@ class MyApp extends PolymerElement {
         }
 
         .drawer-list a {
-          display: block;
-          margin: 0 16px;
-          text-decoration: none;
-          color: var(--app-secondary-color);
-          line-height: 40px;
-		  border-bottom-style: solid;
-		  border-width: 1px;
-		  border-color: #d3d3d3;
-		  /* width: 13.5rem; */
+			display: block;
+      		/* margin: 0 16px; */
+      		text-decoration: none;
+      		color: var(--app-secondary-color);
+			width: 87%;
+
+			padding: 4vh 1rem;
+      		border-style: solid;
+      		border-width: 1px;
+      		border-color: #d3d3d3;
         }
 
 		.drawer-list a:hover {
@@ -160,53 +161,56 @@ class MyApp extends PolymerElement {
 			color: white;
 		}
 
-      </style>
+    </style>
 
-      <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
-      </app-location>
+	<app-location route="{{route}}" url-space-regex="^[[rootPath]]">
+	</app-location>
 
-      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-      </app-route>
+	<app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+	</app-route>
 
-      <app-drawer-layout fullbleed="" narrow="{{narrow}}">
-        <!-- Drawer content -->
-        <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Menu</app-toolbar>
-          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-            <a name="homepage" href="[[rootPath]]homepage">Home</a>
-			<a name="generalpage" href="[[rootPath]]generalpage">Algemeen</a>
-            <a name="workpage" href="[[rootPath]]workpage">Werk & opleiding</a>
-            <a name="housepage" href="[[rootPath]]housepage">Huisvesting & relaties</a>
-			<a name="healthpage" href="[[rootPath]]healthpage">Geestelijke gezondheid</a>
-			<a name="participationpage" href="[[rootPath]]participationpage">Maatschappelijke participatie</a>
-			<a name="justicepage" href="[[rootPath]]justicepage">Justitie</a>
-          </iron-selector>
-        </app-drawer>
+	<app-drawer-layout fullbleed="" narrow="{{narrow}}">
+		<!-- Drawer content -->
+		<app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+			<app-toolbar>Menu</app-toolbar>
 
-        <!-- Main content -->
-        <app-header-layout has-scrolling-region="">
+				<iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+					<div class="menu">
+						<a name="homepage" href="[[rootPath]]homepage">Home</a>
+						<a name="generalpage" href="[[rootPath]]generalpage">Algemeen</a>
+						<a name="workpage" href="[[rootPath]]workpage">Werk & opleiding</a>
+						<a name="housepage" href="[[rootPath]]housepage">Huisvesting & relaties</a>
+						<a name="healthpage" href="[[rootPath]]healthpage">Geestelijke gezondheid</a>
+						<a name="participationpage" href="[[rootPath]]participationpage">Maatschappelijke participatie</a>
+						<a name="justicepage" href="[[rootPath]]justicepage">Justitie</a>
+					</div>
+				</iron-selector>
+		</app-drawer>
 
-          <app-header slot="header" condenses="" reveals="" effects="waterfall">
-            <app-toolbar>
-              <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
-              <div id="main-title" main-title="">Risico App</div>
-			  <a name="resultpage" href="[[rootPath]]resultpage">Resultaten</a>
-            </app-toolbar>
-          </app-header>
+				<!-- Main content -->
+				<app-header-layout has-scrolling-region="">
 
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <my-home-page name="homepage"></my-home-page>
-            <my-general-page name="generalpage"></my-general-page>
-            <my-work-page name="workpage"></my-work-page>
-			<my-house-page name="housepage"></my-house-page>
-			<my-health-page name="healthpage"></my-health-page>
-			<my-participation-page name="participationpage"></my-participation-page>
-			<my-justice-page name="justicepage"></my-justice-page>
-			<my-result-page name="resultpage"></my-result-page>
-            <my-view404 name="view404"></my-view404>
-          </iron-pages>
-        </app-header-layout>
-      </app-drawer-layout>
+					<app-header slot="header" condenses="" reveals="" effects="waterfall">
+						<app-toolbar>
+							<paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
+							<div id="main-title" main-title="">Risico App</div>
+							<a name="resultpage" href="[[rootPath]]resultpage">Resultaten</a>
+						</app-toolbar>
+					</app-header>
+
+					<iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+						<my-home-page name="homepage"></my-home-page>
+						<my-general-page name="generalpage"></my-general-page>
+						<my-work-page name="workpage"></my-work-page>
+						<my-house-page name="housepage"></my-house-page>
+						<my-health-page name="healthpage"></my-health-page>
+						<my-participation-page name="participationpage"></my-participation-page>
+						<my-justice-page name="justicepage"></my-justice-page>
+						<my-result-page name="resultpage"></my-result-page>
+						<my-view404 name="view404"></my-view404>
+					</iron-pages>
+				</app-header-layout>
+	</app-drawer-layout>
     `;
   }
 

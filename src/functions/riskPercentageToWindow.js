@@ -1,6 +1,8 @@
 export const riskAssessmentToWindow = () => {
+	// gets all the factors
 	const factors = window.localStorage.getItem('factors') || []
 
+	// puts the factors on 0 if they haven't been changed
 	if(!factors.length > 0) {
 		window.factors = [
 			{
@@ -108,7 +110,6 @@ export const riskAssessmentToWindow = () => {
 				factor: 0
 			}
 		]
-
 		try {
 			window.localStorage.setItem('factors', JSON.stringify(window.factors))
 		} catch (error) {

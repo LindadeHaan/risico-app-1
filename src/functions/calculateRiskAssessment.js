@@ -1,16 +1,17 @@
+// Maikel helped
+// function where it calculates it using the formula
+// export it here to import it somewhere else
+// arrow function
 export const calculateRiskAssessment = (values) => {
 		// if you don't have values
 		if(!values) {
 			return null
 		}
 
-		// all values
 	const totalValue = values
-
 		// looping over the object and getting the factor
 		.map(obj => obj.factor)
 		// 0 is start values
-		// calculator is wat je er bij optelt
 		.reduce((calculator, currentValue) => calculator + currentValue, 0)
 
 	// the formula
