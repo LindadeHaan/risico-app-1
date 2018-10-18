@@ -41,6 +41,7 @@ window.addEventListener("load", function(event) {
 				 'age-k': '',
 				 'age-m': '',
 				 'age-d': '',
+				 'age-difference': '',
 				 'origin': '',
 				 'track': '',
 			 },
@@ -189,6 +190,7 @@ class MyApp extends PolymerElement {
             <app-toolbar>
               <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
               <div id="main-title" main-title="">Risico App</div>
+			  <a name="resultpage" href="[[rootPath]]resultpage">Resultaten</a>
             </app-toolbar>
           </app-header>
 
@@ -200,6 +202,7 @@ class MyApp extends PolymerElement {
 			<my-health-page name="healthpage"></my-health-page>
 			<my-participation-page name="participationpage"></my-participation-page>
 			<my-justice-page name="justicepage"></my-justice-page>
+			<my-result-page name="resultpage"></my-result-page>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -232,7 +235,7 @@ class MyApp extends PolymerElement {
      // Show 'home' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'home';
-  } else if (['homepage', 'generalpage', 'workpage', 'housepage', 'healthpage', 'participationpage', 'justicepage'].indexOf(page) !== -1) {
+  } else if (['homepage', 'generalpage', 'workpage', 'housepage', 'healthpage', 'participationpage', 'justicepage', 'resultpage'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -271,8 +274,11 @@ class MyApp extends PolymerElement {
 		case 'justicepage':
 			import('/src/views/my-justice-page.js');
 			break;
+		case 'resultpage':
+			import('/src/views/my-result-page.js');
+			break;
      	case 'view404':
-        	import('/src/my-view404.js');
+        	import('/src/views/my-view404.js');
         	break;
     }
   }

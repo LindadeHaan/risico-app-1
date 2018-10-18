@@ -294,6 +294,13 @@ class MyBothComponent extends PolymerElement {
 
 	<fieldset>
 	<legend>Beide</legend>
+		<div class="form-item-container">
+		   <label for="age-difference">Leeftijd verschil tussen ouders</label>
+		   <select name='age-difference' id="age-difference" on-change="changeAnswer">
+			  <option value="less">Minder dan 5 jaar</option>
+			  <option value="more">Meer dan 5 jaar</option>
+		   </select>
+		</div>
 	   <div class="form-item-container">
 		  <label for="origin">Herkomst ouders</label>
 		  <select name='origin' id="origin" on-change="changeAnswer">
@@ -327,16 +334,22 @@ class MyBothComponent extends PolymerElement {
 		setNewLocalStorage(inputName, selectedValue, 'general')
 
 
-		if (inputName === "origin") {
-			if (selectedValue === "nl") {
-				setValueToFactor(inputName, 0)
-			} else if (selectedValue === "not-nl") {
-				setValueToFactor(inputName, 0.16972268)
-			} else if (selectedValue === "not-and-nl") {
-				setValueToFactor(inputName, 0.08942976)
-			} else {
+		if (inputName === "age-difference") {
+			if (selectedValue === "more") {
+				setValueToFactor(inputName, 0.28580939)
+			} else  { // less than 5
 				setValueToFactor(inputName, 0)
 			}
+		} else if (inputName === "origin") {
+				if (selectedValue === "nl") {
+					setValueToFactor(inputName, 0)
+				} else if (selectedValue === "not-nl") {
+					setValueToFactor(inputName, 0.16972268)
+				} else if (selectedValue === "not-and-nl") {
+					setValueToFactor(inputName, 0.08942976)
+				} else {
+					setValueToFactor(inputName, 0)
+				}
 		} else if (inputName === "track") {
 			if (selectedValue === "no-help") {
 				setValueToFactor(inputName, -0.00587023)
@@ -360,6 +373,7 @@ class MyBothComponent extends PolymerElement {
 		super.ready ()
 
 	const selectNames = [
+		'age-difference',
 		'origin',
 		'track'
 	]

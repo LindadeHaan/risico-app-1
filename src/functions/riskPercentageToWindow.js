@@ -20,6 +20,10 @@ export const riskAssessmentToWindow = () => {
 				factor: 0
 			},
 			{
+				name: "age-difference",
+				factor: 0
+			},
+			{
 				name: "origin",
 				factor: 0
 			},
